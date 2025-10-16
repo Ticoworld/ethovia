@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useRef, useEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -46,48 +46,49 @@ export default function FeaturedWork() {
   const containerRef = useRef<HTMLDivElement>(null);
   const horizontalRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  // useLayoutEffect ensures ScrollTrigger cleans up before React removes DOM nodes
+  useLayoutEffect(() => {
     if (!containerRef.current || !horizontalRef.current) return;
 
     const container = containerRef.current;
     const horizontal = horizontalRef.current;
 
-    let mm: gsap.Context | null = null;
-    const setup = () => {
-      const scrollDistance = horizontal.scrollWidth - window.innerWidth;
-      mm = gsap.context(() => {
-        const tween = gsap.to(horizontal, {
-          x: -scrollDistance,
-          ease: "none",
-          scrollTrigger: {
-            trigger: container,
-            start: "top top",
-            end: () => `+=${scrollDistance + window.innerHeight}`,
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
+    const ctx = gsap.context(() => {
+      const tween = gsap.to(horizontal, {
+        x: () => {
+          const width = horizontal.scrollWidth - window.innerWidth;
+          return width > 0 ? -width : 0;
+        },
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",
+          end: () => {
+            const width = horizontal.scrollWidth - window.innerWidth;
+            return `+=${Math.max(width, 0) + window.innerHeight}`;
           },
-        });
-        return () => tween.kill();
-      }, container);
-    };
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
 
-    setup();
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
+    }, container);
+
     const onResize = () => {
       // Refresh ScrollTrigger on resize to keep distances correct
       ScrollTrigger.refresh();
     };
-    window.addEventListener('resize', onResize);
+    window.addEventListener("resize", onResize);
 
     return () => {
-      try {
-        window.removeEventListener('resize', onResize);
-        ScrollTrigger.getAll().forEach((st) => st.kill());
-        mm?.revert();
-      } catch {
-        // best-effort cleanup; avoid throwing during navigation
-      }
+      window.removeEventListener("resize", onResize);
+      ctx.revert();
     };
   }, []);
 
@@ -113,7 +114,7 @@ export default function FeaturedWork() {
             >
               <Link 
                 href={`/work/${item.slug}`} 
-                className="w-full h-full block group cursor-none"
+                className="w-full h-full block group cursor-crosshair hover:ring-4 hover:ring-accent/30 transition focus:outline-none"
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}

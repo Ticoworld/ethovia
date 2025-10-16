@@ -6,62 +6,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionTitle from "@/components/common/SectionTitle";
+import { getPortfolioItems } from "@/data/portfolioData";
 
 const categories = ["All", "Web Development", "Paid Ads", "Social Media"];
 
-const portfolioItems = [
-  {
-    id: 1,
-    title: "E-Commerce Transformation",
-    category: "Web Development",
-    image: "/images/portfolio/portfolio-placeholder-1.png",
-    slug: "ecommerce-transformation",
-    excerpt: "Complete redesign that tripled conversion rates",
-  },
-  {
-    id: 2,
-    title: "Social Media Campaign",
-    category: "Paid Ads",
-    image: "/images/portfolio/portfolio-placeholder-2.png",
-    slug: "social-media-campaign",
-    excerpt: "Multi-platform campaign generating 2M+ impressions",
-  },
-  {
-    id: 3,
-    title: "SaaS Product Launch",
-    category: "Web Development",
-    image: "/images/portfolio/portfolio-placeholder-3.png",
-    slug: "saas-product-launch",
-    excerpt: "Full-stack marketing for successful product launch",
-  },
-  {
-    id: 4,
-    title: "Instagram Influencer Campaign",
-    category: "Social Media",
-    image: "/images/portfolio/portfolio-placeholder-1.png",
-    slug: "instagram-influencer",
-    excerpt: "Viral campaign with 15K new customers",
-  },
-  {
-    id: 5,
-    title: "Google Ads Optimization",
-    category: "Paid Ads",
-    image: "/images/portfolio/portfolio-placeholder-2.png",
-    slug: "google-ads-optimization",
-    excerpt: "45% reduction in CPA with doubled lead volume",
-  },
-  {
-    id: 6,
-    title: "Restaurant Website Redesign",
-    category: "Web Development",
-    image: "/images/portfolio/portfolio-placeholder-3.png",
-    slug: "restaurant-redesign",
-    excerpt: "Mobile-first design boosting reservations by 200%",
-  },
-];
-
 export default function WorkPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const portfolioItems = getPortfolioItems();
 
   const filteredItems =
     activeCategory === "All"

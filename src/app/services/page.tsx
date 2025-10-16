@@ -212,7 +212,7 @@ export default function ServicesPage() {
               >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center mr-4">
-                    <service.icon className="w-6 h-6 text-white" />
+                    <service.icon className="w-6 h-6 text-primary" />
                   </div>
                   <span className="text-accent font-semibold">
                     {service.tagline}
@@ -265,9 +265,9 @@ export default function ServicesPage() {
                 </div>
 
                 <Link href="/contact">
-                  <Button variant="primary" size="lg">
-                    <span className="text-[#00024D] font-bold border-2 border-[#00024D] rounded-full px-6 py-2">Get Started</span>
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                  <Button variant="primary" size="lg" className="border-2 border-[#00024D] rounded-full px-6 py-2 flex items-center">
+                    <span className="text-[#00024D] font-bold">Get Started</span>
+                    <ArrowRight className="w-5 h-5 ml-2 text-[#00024D]" />
                   </Button>
                 </Link>
               </motion.div>
@@ -304,7 +304,7 @@ export default function ServicesPage() {
                   <div className="text-3xl font-bold text-green-600 mb-3">
                     {service.caseStudy.metric}
                   </div>
-                  <p className="text-white/90 leading-relaxed">
+                  <p className="text-primary leading-relaxed">
                     {service.caseStudy.description}
                   </p>
                 </div>
@@ -330,8 +330,11 @@ export default function ServicesPage() {
               Schedule a free consultation and we&apos;ll help you create the perfect strategy
             </p>
             <Link href="/contact">
-              <Button className="bg-white text-[#00024D] font-bold" size="lg">
-                <span className="text-[#00024D] font-bold border-2 border-[#00024D] rounded-full px-6 py-2">Schedule Free Consultation</span>
+              <Button
+                className="bg-white text-[#00024D] font-bold border-2 border-[#00024D] rounded-full px-6 py-2 shadow-none hover:shadow-lg hover:shadow-[#00024D]/20 transition-all duration-300 flex items-center justify-center"
+                size="lg"
+              >
+                <span className="text-[#00024D] font-bold">Schedule Free Consultation</span>
               </Button>
             </Link>
           </motion.div>

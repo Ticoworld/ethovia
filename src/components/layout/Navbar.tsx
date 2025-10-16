@@ -86,19 +86,17 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo with animation - no text */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative w-40 h-40">
-              <Image
-                src="/images/logo/ethovia-logo.png"
-                alt="Ethovia Logo"
-                width={160}
-                height={160}
-                className="object-contain drop-shadow-2xl"
-                quality={100}
-                sizes="(max-width: 768px) 120px, 160px"
-                priority
-              />
-            </div>
+          <Link href="/" className="flex items-center group h-16">
+            <Image
+              src="/images/logo/ethovia-logo.png"
+              alt="Ethovia Logo"
+              width={160}
+              height={48}
+              className="object-contain drop-shadow-2xl"
+              quality={100}
+              sizes="(max-width: 768px) 140px, 160px"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

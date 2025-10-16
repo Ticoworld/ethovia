@@ -269,10 +269,9 @@ export default function ContactPage() {
                   {/* Submit Button */}
                   <Button
                     type="submit"
-                    variant="primary"
                     size="lg"
                     isLoading={isSubmitting}
-                    className="w-full"
+                    className="w-full bg-black text-white hover:bg-primary border border-white/10"
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
@@ -357,28 +356,28 @@ export default function ContactPage() {
                 <div className="flex space-x-4">
                   <a
                     href="#"
-                    className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="w-6 h-6" />
                   </a>
                   <a
                     href="#"
-                    className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
                     aria-label="Twitter"
                   >
                     <Twitter className="w-6 h-6" />
                   </a>
                   <a
                     href="#"
-                    className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
                     aria-label="Facebook"
                   >
                     <Facebook className="w-6 h-6" />
                   </a>
                   <a
                     href="#"
-                    className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
                     aria-label="Instagram"
                   >
                     <Instagram className="w-6 h-6" />

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/common/ScrollToTop";
-import SmoothScroll from "@/components/common/SmoothScroll";
+import SmoothClient from "@/components/common/SmoothClient";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -46,8 +46,12 @@ export const metadata: Metadata = {
     description:
       "Transform your digital presence with high-performance websites and data-driven ad campaigns",
   },
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -56,13 +60,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
+      <head>
+        <link rel="icon" type="image/png" href="/images/logo/ethovia-logo.png" />
+      </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased overflow-x-hidden`}
       >
-        <SmoothScroll />
+        <SmoothClient />
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen overflow-x-hidden">{children}</main>
         <Footer />
         <ScrollToTop />
       </body>

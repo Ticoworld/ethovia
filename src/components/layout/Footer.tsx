@@ -58,18 +58,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <Link href="/" className="inline-block">
-              <div className="relative w-40 h-40">
-                <Image
-                  src="/images/logo/ethovia-logo.png"
-                  alt="Ethovia - Digital Marketing Agency"
-                  width={160}
-                  height={160}
-                  className="object-contain"
-                  sizes="(max-width: 768px) 120px, 160px"
-                  priority
-                />
-              </div>
+            <Link href="/" className="flex items-center h-12 w-fit">
+              <Image
+                src="/images/logo/ethovia-logo.png"
+                alt="Ethovia - Digital Marketing Agency"
+                width={160}
+                height={48}
+                className="object-contain"
+                sizes="(max-width: 768px) 140px, 160px"
+                priority
+              />
             </Link>
             <p className="text-white/80 text-base leading-relaxed font-medium">
               Digital Marketing That Delivers Results.<br/>
