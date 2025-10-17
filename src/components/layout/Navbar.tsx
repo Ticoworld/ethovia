@@ -80,8 +80,8 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBgClass}`}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBgClass}`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -104,7 +104,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
                 <motion.div
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                     pathname === link.href
                       ? "text-cyan-400"
                       : "text-white hover:text-accent"
@@ -137,7 +137,7 @@ export default function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-6 py-3 bg-gradient-to-r from-secondary to-accent text-white rounded-full font-semibold text-sm overflow-hidden shadow-lg shadow-accent/40 hover:shadow-accent/60 transition-all duration-300 border border-white/20"
+                className="group relative px-6 py-3 bg-gradient-to-r from-secondary to-accent text-white rounded-full font-semibold text-sm overflow-hidden shadow-lg shadow-accent/40 hover:shadow-accent/60 transition-all duration-200 border border-white/20"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Get Started
@@ -145,14 +145,14 @@ export default function Navbar() {
                 </span>
                 {/* Animated gradient background */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                 />
                 {/* Hover shine effect */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.4 }}
                 />
               </motion.button>
             </Link>
@@ -162,7 +162,7 @@ export default function Navbar() {
           {!isMobileMenuOpen && (
             <motion.button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden transition-colors duration-300 p-2 relative text-white hover:text-accent"
+              className="md:hidden transition-colors duration-200 p-2 relative text-white hover:text-accent"
               style={{ zIndex: 10000 }}
               aria-label="Open mobile menu"
               whileTap={{ scale: 0.9 }}

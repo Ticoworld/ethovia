@@ -42,7 +42,7 @@ export default function Stats() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
@@ -60,23 +60,23 @@ export default function Stats() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
               className="group relative"
             >
               {/* Card background with hover effect */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-white/0 rounded-2xl border border-white/10 transition-all duration-500 group-hover:from-white/10 group-hover:border-accent/50" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-white/0 rounded-2xl border border-white/10 transition-all duration-300 group-hover:from-white/10 group-hover:border-accent/50" />
               
               {/* Card content */}
               <div className="relative p-8">
                 {/* Icon */}
                 <div className="mb-6">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#4A9FFF] to-[#00F0FF] flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#4A9FFF] to-[#00F0FF] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
                     <principle.icon className="w-8 h-8 text-white drop-shadow-md" strokeWidth={2.5} />
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 transition-colors duration-300 group-hover:text-[#00F0FF]">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 transition-colors duration-200 group-hover:text-[#00F0FF]">
                   {principle.title}
                 </h3>
 
@@ -87,7 +87,7 @@ export default function Stats() {
               </div>
 
               {/* Hover glow effect */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent rounded-2xl blur-xl" />
               </div>
             </motion.div>

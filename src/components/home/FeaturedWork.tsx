@@ -120,12 +120,12 @@ export default function FeaturedWork() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                   className={`relative w-full h-full overflow-hidden bg-gradient-to-br ${item.bgColor} shadow-2xl`}
                 >
                   {/* Custom Cursor */}
                   <div className="absolute inset-0 z-50 pointer-events-none">
-                    <div className="group-hover:opacity-100 opacity-0 transition-opacity duration-300">
+                    <div className="group-hover:opacity-100 opacity-0 transition-opacity duration-200">
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-2 border-white/50 flex items-center justify-center backdrop-blur-sm bg-white/10">
                         <span className="text-white font-bold text-sm">VIEW</span>
                       </div>
@@ -138,7 +138,7 @@ export default function FeaturedWork() {
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover opacity-60 mix-blend-overlay transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover opacity-60 mix-blend-overlay transition-transform duration-500 group-hover:scale-105"
                       sizes="100vw"
                       priority={index === 0}
                     />
@@ -180,7 +180,7 @@ export default function FeaturedWork() {
                           initial={{ opacity: 0, y: 30 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
-                          transition={{ delay: 0.4, duration: 0.8 }}
+                          transition={{ delay: 0.2, duration: 0.6 }}
                           className="text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold text-white leading-[0.9] tracking-tight"
                           style={{
                             textShadow: '0 4px 20px rgba(0,0,0,0.3)',
@@ -212,7 +212,7 @@ export default function FeaturedWork() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.5 }}
+                        transition={{ delay: 0.3 }}
                         className="space-y-2"
                       >
                         <p className="text-white/90 text-base md:text-lg font-semibold">
@@ -228,14 +228,14 @@ export default function FeaturedWork() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.6 }}
+                        transition={{ delay: 0.4 }}
                         className="hidden md:block w-24 h-24 bg-white/10 backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-colors duration-300"
                       />
                     </div>
                   </div>
 
                   {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
                   </div>
                 </motion.div>

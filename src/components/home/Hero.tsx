@@ -84,7 +84,7 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-8 leading-[0.9] tracking-tight"
           >
             <span className="block">WE MAKE</span>
@@ -114,7 +114,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl sm:text-2xl md:text-3xl text-white font-light mb-12 max-w-3xl leading-relaxed"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.3)" }}
           >
@@ -129,7 +129,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-6 items-start"
           >
             <Link href="/contact" className="group">
@@ -147,7 +147,7 @@ export default function Hero() {
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.4 }}
                 />
               </motion.button>
             </Link>

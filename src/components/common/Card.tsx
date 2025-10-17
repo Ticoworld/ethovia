@@ -17,7 +17,7 @@ export default function Card({
   onClick,
 }: CardProps) {
   const baseStyles =
-    "bg-white rounded-lg shadow-md transition-all duration-300 overflow-hidden";
+    "bg-white rounded-lg shadow-md transition-all duration-200 overflow-hidden";
   const hoverStyles = hover
     ? "hover:shadow-xl hover:-translate-y-2 hover:border-accent/50 border-2 border-transparent cursor-pointer"
     : "";
@@ -28,7 +28,7 @@ export default function Card({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4 }}
         className={`${baseStyles} ${hoverStyles} ${className}`}
         onClick={onClick}
         role="button"

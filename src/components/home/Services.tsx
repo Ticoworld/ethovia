@@ -67,7 +67,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
             >
               <Card hover className="h-full group">
                 <div className="relative h-64 overflow-hidden">
@@ -75,7 +75,7 @@ export default function Services() {
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                     quality={90}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
@@ -94,10 +94,10 @@ export default function Services() {
                   </p>
                   <Link
                     href={service.href}
-                    className="inline-flex items-center text-secondary font-semibold hover:text-accent transition-colors duration-300 group/link"
+                    className="inline-flex items-center text-secondary font-semibold hover:text-accent transition-colors duration-200 group/link"
                   >
                     Learn More
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/link:translate-x-2" />
+                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover/link:translate-x-2" />
                   </Link>
                 </div>
               </Card>

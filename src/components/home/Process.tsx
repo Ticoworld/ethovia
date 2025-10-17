@@ -84,7 +84,7 @@ export default function Process() {
           x: [-20, 20, -20],
         }}
         transition={{
-          duration: 10,
+          duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -97,7 +97,7 @@ export default function Process() {
           x: [20, -20, 20],
         }}
         transition={{
-          duration: 12,
+          duration: 9,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -119,7 +119,7 @@ export default function Process() {
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              transition={{ duration: 1, ease: "easeInOut" }}
             />
 
             <div className="grid grid-cols-4 gap-12">
@@ -130,8 +130,8 @@ export default function Process() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ 
-                    duration: 0.7, 
-                    delay: index * 0.15,
+                    duration: 0.5, 
+                    delay: index * 0.1,
                     ease: "easeOut"
                   }}
                   className="relative group"
@@ -145,7 +145,7 @@ export default function Process() {
                         rotate: 5,
                         borderColor: "#ffffff",
                       }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.3 }}
                     >
                       {step.number}
                       {/* Animated ring */}
@@ -156,9 +156,9 @@ export default function Process() {
                           opacity: [1, 0, 1],
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 1.5,
                           repeat: Infinity,
-                          delay: index * 0.3,
+                          delay: index * 0.2,
                         }}
                       />
                     </motion.div>
@@ -171,21 +171,21 @@ export default function Process() {
                       scale: 1.05,
                       borderColor: "#00F0FF",
                     }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <Image
                       src={step.image}
                       alt={step.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
                       quality={90}
                       sizes="25vw"
                     />
                     {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
                     {/* Corner accent */}
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-full group-hover:translate-x-0">
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-full group-hover:translate-x-0">
                       <div className="absolute bottom-0 left-0 w-full h-full border-l-4 border-b-4 border-accent rounded-bl-2xl" />
                     </div>
                   </motion.div>
@@ -209,7 +209,7 @@ export default function Process() {
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.15 + 0.5, duration: 0.4 }}
+                    transition={{ delay: index * 0.1 + 0.3, duration: 0.3 }}
                   />
                 </motion.div>
               ))}
@@ -225,7 +225,7 @@ export default function Process() {
               initial={{ opacity: 0, x: -80 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               className="relative flex items-start group"
             >
               {/* Animated Vertical Line */}
@@ -235,7 +235,7 @@ export default function Process() {
                   initial={{ scaleY: 0, originY: 0 }}
                   whileInView={{ scaleY: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
                 />
               )}
 
@@ -264,11 +264,11 @@ export default function Process() {
                     src={step.image}
                     alt={step.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                     quality={85}
                     sizes="(max-width: 768px) 100vw, 75vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="p-8">
                   <h3 className="text-xl md:text-2xl font-bold text-primary mb-4 transition-colors duration-300 group-hover:text-accent">

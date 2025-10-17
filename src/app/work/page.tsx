@@ -91,7 +91,7 @@ export default function WorkPage() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
                   <Link href={`/work/${item.slug}`}>
-                    <div className="group relative h-96 rounded-lg overflow-hidden shadow-lg cursor-pointer bg-white">
+                    <div className="group relative h-[28rem] rounded-lg overflow-hidden shadow-lg cursor-pointer bg-white">
                       {/* Image */}
                       <div className="relative h-64 overflow-hidden">
                         <Image
@@ -105,7 +105,7 @@ export default function WorkPage() {
                       </div>
 
                       {/* Content */}
-                      <div className="p-6">
+                        <div className="p-6 pb-10">
                         <span className="inline-block px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium mb-3">
                           {item.category}
                         </span>
@@ -113,10 +113,11 @@ export default function WorkPage() {
                           {item.title}
                         </h3>
                         <p className="text-gray-600 mb-4">{item.excerpt}</p>
-                        <div className="flex items-center text-secondary font-medium group-hover:text-accent transition-colors duration-300">
+                          <div className="flex items-center text-secondary font-medium group-hover:text-accent transition-colors duration-300 mb-2">
                           View Case Study
                           <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
                         </div>
+                          {/* Add extra bottom padding for spacing */}
                       </div>
                     </div>
                   </Link>

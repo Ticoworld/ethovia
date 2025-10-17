@@ -31,7 +31,7 @@ export default function CTASection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
               Ready to Grow Your{" "}
@@ -53,9 +53,9 @@ export default function CTASection() {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-8 text-white text-lg">
               <a
                 href="mailto:hello@ethovia.com"
-                className="flex items-center gap-3 hover:text-accent transition-all duration-300 group"
+                className="flex items-center gap-3 hover:text-accent transition-all duration-200 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-200">
                   <Mail className="w-6 h-6" />
                 </div>
                 <span className="font-medium">hello@ethovia.com</span>
@@ -63,9 +63,9 @@ export default function CTASection() {
               <div className="hidden sm:block w-px h-8 bg-white/20" />
               <a
                 href="tel:+1234567890"
-                className="flex items-center gap-3 hover:text-accent transition-all duration-300 group"
+                className="flex items-center gap-3 hover:text-accent transition-all duration-200 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-200">
                   <Phone className="w-6 h-6" />
                 </div>
                 <span className="font-medium">+1 (234) 567-890</span>
@@ -81,7 +81,7 @@ export default function CTASection() {
           y: [0, -20, 0],
         }}
         transition={{
-          duration: 4,
+          duration: 3,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -92,7 +92,7 @@ export default function CTASection() {
           y: [0, 20, 0],
         }}
         transition={{
-          duration: 5,
+          duration: 3.5,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -106,7 +106,7 @@ export default function CTASection() {
           y: [0, -30, 0],
         }}
         transition={{
-          duration: 6,
+          duration: 4.5,
           repeat: Infinity,
           ease: "easeInOut",
         }}

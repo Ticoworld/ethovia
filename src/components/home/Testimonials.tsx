@@ -106,11 +106,11 @@ export default function Testimonials() {
       </div>
 
       {/* Trust Badge */}
-      <motion.div
+        <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.4, delay: 0.3 }}
         className="text-center mt-20"
       >
         <div className="flex items-center justify-center gap-2 mb-4">
@@ -141,7 +141,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
           {/* Quote Icon */}
           <div className="mb-4">
             <svg
-              className="w-10 h-10 text-accent/30 group-hover:text-accent/50 transition-colors duration-300"
+              className="w-10 h-10 text-accent/30 group-hover:text-accent/50 transition-colors duration-200"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -154,7 +154,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
             {[...Array(testimonial.rating)].map((_, i) => (
               <Star
                 key={i}
-                className="w-5 h-5 text-accent fill-accent transition-transform duration-300 group-hover:scale-110"
+                className="w-5 h-5 text-accent fill-accent transition-transform duration-200 group-hover:scale-110"
                 style={{ transitionDelay: `${i * 50}ms` }}
               />
             ))}
@@ -167,7 +167,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
 
           {/* Author */}
           <div className="flex items-center mt-auto pt-6 border-t border-gray-100">
-            <div className="relative w-14 h-14 rounded-full overflow-hidden mr-4 flex-shrink-0 ring-2 ring-accent/20 group-hover:ring-accent/50 transition-all duration-300">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden mr-4 flex-shrink-0 ring-2 ring-accent/20 group-hover:ring-accent/50 transition-all duration-200">
               <Image
                 src={testimonial.avatar}
                 alt={testimonial.name}
@@ -176,7 +176,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
               />
             </div>
             <div>
-              <div className="font-bold text-primary text-base group-hover:text-secondary transition-colors duration-300">
+              <div className="font-bold text-primary text-base group-hover:text-secondary transition-colors duration-200">
                 {testimonial.name}
               </div>
               <div className="text-sm text-gray-600">

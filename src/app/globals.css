@@ -54,12 +54,12 @@
   }
 
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 4s ease-in-out infinite;
   }
 
   .animate-gradient {
     background-size: 200% 200%;
-    animation: gradient 8s ease infinite;
+    animation: gradient 6s ease infinite;
   }
 
   @keyframes gradient {
@@ -101,11 +101,11 @@
 
   /* Infinite Scroll Animations for Testimonials */
   .animate-scroll-left {
-    animation: scroll-left 40s linear infinite;
+    animation: scroll-left 30s linear infinite;
   }
 
   .animate-scroll-right {
-    animation: scroll-right 40s linear infinite;
+    animation: scroll-right 30s linear infinite;
   }
 
   .hover\:pause-animation:hover {
