@@ -4,13 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useRef, useLayoutEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import SectionTitle from "@/components/common/SectionTitle";
+import { useState } from "react";
 
 const portfolioItems = [
   {
@@ -20,7 +15,7 @@ const portfolioItems = [
     year: "2024",
     image: "/images/portfolio/portfolio-placeholder-1.png",
     slug: "ecommerce-transformation",
-    bgColor: "from-blue-900/95 to-purple-900/95",
+    metric: "300% Conversion Increase",
   },
   {
     id: 2,
@@ -29,7 +24,7 @@ const portfolioItems = [
     year: "2024",
     image: "/images/portfolio/portfolio-placeholder-2.png",
     slug: "social-media-campaign",
-    bgColor: "from-purple-900/95 to-pink-900/95",
+    metric: "2M+ Impressions",
   },
   {
     id: 3,
@@ -38,264 +33,212 @@ const portfolioItems = [
     year: "2023",
     image: "/images/portfolio/portfolio-placeholder-3.png",
     slug: "saas-product-launch",
-    bgColor: "from-indigo-900/95 to-blue-900/95",
+    metric: "500% ROI",
   },
 ];
 
 export default function FeaturedWork() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const horizontalRef = useRef<HTMLDivElement>(null);
+  // Portfolio card component with image fallback
+  function PortfolioCard({ 
+    item, 
+    size = "large" 
+  }: { 
+    item: typeof portfolioItems[number]; 
+    size?: "large" | "medium" | "wide";
+  }) {
+    const [imgError, setImgError] = useState(false);
+    
+    const heightClass = {
+      large: "h-[500px] lg:h-[600px]",
+      medium: "h-[400px] lg:h-[600px]",
+      wide: "h-[350px] lg:h-[450px]"
+    }[size];
 
-  // useLayoutEffect ensures ScrollTrigger cleans up before React removes DOM nodes
-  useLayoutEffect(() => {
-    if (!containerRef.current || !horizontalRef.current) return;
-
-    const container = containerRef.current;
-    const horizontal = horizontalRef.current;
-
-    const ctx = gsap.context(() => {
-      const tween = gsap.to(horizontal, {
-        x: () => {
-          const width = horizontal.scrollWidth - window.innerWidth;
-          return width > 0 ? -width : 0;
-        },
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: () => {
-            const width = horizontal.scrollWidth - window.innerWidth;
-            return `+=${Math.max(width, 0) + window.innerHeight}`;
-          },
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      return () => {
-        tween.scrollTrigger?.kill();
-        tween.kill();
-      };
-    }, container);
-
-    const onResize = () => {
-      // Refresh ScrollTrigger on resize to keep distances correct
-      ScrollTrigger.refresh();
-    };
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-      ctx.revert();
-    };
-  }, []);
-
-  return (
-    <>
-      {/* Horizontal Scroll Container */}
-      <div 
-        ref={containerRef}
-        className="relative bg-gradient-to-b from-gray-50 to-white overflow-hidden"
+    return (
+      <Link 
+        href={`/work/${item.slug}`}
+        className="group block relative rounded-3xl overflow-hidden shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(0,2,77,0.3)] transition-all duration-500 border border-gray-100/50 hover:border-accent/30"
       >
-        {/* Fixed Background Decorations */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[128px] animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[128px] animate-float" style={{ animationDelay: '2s' }} />
-
-        <div 
-          ref={horizontalRef}
-          className="flex items-center will-change-transform"
-        >
-          {portfolioItems.map((item, index) => (
-            <div
-              key={item.id}
-              className="flex-shrink-0 w-screen h-screen"
-            >
-              <Link 
-                href={`/work/${item.slug}`} 
-                className="w-full h-full block group cursor-crosshair hover:ring-4 hover:ring-accent/30 transition focus:outline-none"
-              >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className={`relative w-full h-full overflow-hidden bg-gradient-to-br ${item.bgColor} shadow-2xl`}
-                >
-                  {/* Custom Cursor */}
-                  <div className="absolute inset-0 z-50 pointer-events-none">
-                    <div className="group-hover:opacity-100 opacity-0 transition-opacity duration-200">
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-2 border-white/50 flex items-center justify-center backdrop-blur-sm bg-white/10">
-                        <span className="text-white font-bold text-sm">VIEW</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Background Image */}
-                  <div className="absolute inset-0">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover opacity-60 mix-blend-overlay transition-transform duration-500 group-hover:scale-105"
-                      sizes="100vw"
-                      priority={index === 0}
-                    />
-                  </div>
-
-                  {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.bgColor}`} />
-
-                  {/* Content Container */}
-                  <div className="relative h-full flex flex-col justify-between p-8 md:p-12 lg:p-16 xl:p-20">
-                    {/* Top Section - Logo/Brand (optional) */}
-                    <div className="flex justify-between items-start">
-                      <motion.span 
-                        className="text-white/60 text-sm md:text-base font-semibold uppercase tracking-widest"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        Project
-                      </motion.span>
-                      
-                      <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="text-white flex items-center gap-2 text-sm md:text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      >
-                        <span className="font-semibold">View Project</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </motion.div>
-                    </div>
-
-                    {/* Center Section - Main Content */}
-                    <div className="flex-1 flex items-center">
-                      <div className="space-y-6">
-                        <motion.h2
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.2, duration: 0.6 }}
-                          className="text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold text-white leading-[0.9] tracking-tight"
-                          style={{
-                            textShadow: '0 4px 20px rgba(0,0,0,0.3)',
-                          }}
-                        >
-                          {item.title.split(' ').map((word, i) => (
-                            <span key={i} className="block">
-                              {i === 0 && (
-                                <span className="text-white">{word}</span>
-                              )}
-                              {i === 1 && (
-                                <span className="text-white/40 font-outline-2" style={{
-                                  WebkitTextStroke: '2px white',
-                                  WebkitTextFillColor: 'transparent',
-                                }}>{word}</span>
-                              )}
-                              {i > 1 && (
-                                <span className="text-white">{word}</span>
-                              )}
-                            </span>
-                          ))}
-                        </motion.h2>
-                      </div>
-                    </div>
-
-                    {/* Bottom Section - Meta Info */}
-                    <div className="flex justify-between items-end">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="space-y-2"
-                      >
-                        <p className="text-white/90 text-base md:text-lg font-semibold">
-                          {item.year}
-                        </p>
-                        <p className="text-white/70 text-sm md:text-base">
-                          {item.category}
-                        </p>
-                      </motion.div>
-
-                      {/* Decorative Element */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                        className="hidden md:block w-24 h-24 bg-white/10 backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-colors duration-300"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
-                  </div>
-                </motion.div>
-              </Link>
+        {/* Image Background with Fallback */}
+        <div className={`relative ${heightClass}`}>
+          {!imgError ? (
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes={size === "wide" ? "100vw" : size === "large" ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            // Premium fallback with abstract shapes
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary flex items-center justify-center overflow-hidden">
+              <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-accent/20 blur-3xl" />
+              <div className="absolute bottom-10 left-10 w-80 h-80 rounded-full bg-secondary/30 blur-3xl" />
+              <div className="relative text-center p-8">
+                <div className="text-white/30 text-6xl font-bold mb-2">{item.category.split(' ')[0]}</div>
+              </div>
             </div>
-          ))}
-
-          {/* Final CTA Screen - Centered */}
-          <div className="flex-shrink-0 w-screen h-screen flex items-center justify-center px-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <motion.h3 
-                className="text-6xl md:text-7xl lg:text-8xl font-bold text-primary mb-8 leading-tight"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                Want to see{" "}
-                <span className="block mt-4">
-                  <span className="text-gradient">more</span>?
-                </span>
-              </motion.h3>
-              
-              <motion.p 
-                className="text-xl md:text-2xl text-gray-600 mb-16 max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-              >
-                Explore our full portfolio of success stories
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                <Link href="/work" className="inline-block">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-12 py-6 bg-gradient-to-r from-[#00024D] to-[#4A9FFF] text-white rounded-full font-bold text-xl shadow-2xl shadow-primary/40 hover:shadow-primary/60 transition-all duration-300 inline-flex items-center gap-4"
-                  >
-                    View All Projects
-                    <ArrowRight className="w-6 h-6" />
-                  </motion.button>
-                </Link>
-              </motion.div>
-            </motion.div>
+          )}
+          
+          {/* Strong dark overlay to ensure text legibility on light images */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-95 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Accent Glow on Hover */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 via-transparent to-secondary/20" />
           </div>
         </div>
+
+        {/* Content Overlay */}
+        <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-10">
+          {/* Year Badge */}
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="inline-block self-start mb-3 px-4 py-1.5 bg-black/60 backdrop-blur-md border border-black/40 rounded-full text-white text-xs font-semibold tracking-wide"
+          >
+            {item.category}
+          </motion.span>
+
+          {/* Title */}
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className={`font-bold text-white mb-3 leading-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.6)] group-hover:text-accent transition-colors duration-300 ${
+              size === "wide" ? "text-3xl lg:text-4xl" : size === "large" ? "text-3xl lg:text-5xl" : "text-2xl lg:text-3xl"
+            }`}
+          >
+            {item.title}
+          </motion.h3>
+
+          {/* Metric Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 self-start mb-4 px-4 py-2 bg-accent/90 backdrop-blur-sm rounded-lg"
+          >
+            <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span className="text-white font-bold text-sm">{item.metric}</span>
+          </motion.div>
+
+          {/* CTA - appears on hover */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-2 text-white font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-2 bg-black/30 backdrop-blur-sm px-3 py-1 rounded"
+          >
+            <span className="text-sm">View Case Study</span>
+            <ArrowRight className="w-4 h-4" />
+          </motion.div>
+        </div>
+
+        {/* Premium corner accent */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      </Link>
+    );
+  }
+  return (
+    <section className="py-24 lg:py-40 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
+      {/* Enhanced Background Elements */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-accent/8 via-secondary/5 to-transparent rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-primary/5 via-accent/8 to-transparent rounded-full blur-[140px]" />
+      
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,2,77,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,2,77,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <SectionTitle
+          title="Featured Work"
+          subtitle="Real results from real clients — see how we've transformed businesses"
+          gradient
+        />
+
+        {/* Premium Bento-style Asymmetric Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 mb-16">
+          
+          {/* Featured Card 1 - Large Hero (spans 8 columns) */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="lg:col-span-8"
+          >
+            <PortfolioCard item={portfolioItems[0]} size="large" />
+          </motion.div>
+
+          {/* Featured Card 2 - Smaller Vertical (spans 4 columns) */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            className="lg:col-span-4"
+          >
+            <PortfolioCard item={portfolioItems[1]} size="medium" />
+          </motion.div>
+
+          {/* Featured Card 3 - Wide Horizontal (spans 12 columns) */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="lg:col-span-12"
+          >
+            <PortfolioCard item={portfolioItems[2]} size="wide" />
+          </motion.div>
+        </div>
+
+        {/* Premium CTA Section - ensure visible (higher z-index and stronger focus) */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center relative z-20"
+        >
+          <Link href="/work" className="relative z-20 inline-block">
+            <motion.button
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              aria-label="View all projects"
+              className="group/btn relative z-30 px-12 py-5 bg-gradient-to-r from-primary via-secondary to-accent text-white rounded-full font-bold text-lg shadow-[0_12px_50px_-12px_rgba(0,2,77,0.45)] hover:shadow-[0_24px_80px_-20px_rgba(74,159,255,0.45)] transition-all duration-500 inline-flex items-center gap-3 overflow-visible focus:outline-none focus:ring-4 focus:ring-accent/30 bg-blue-950"
+            >
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              
+              <span className="relative z-10">View All Projects</span>
+              <ArrowRight className="w-5 h-5 relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300" />
+            </motion.button>
+          </Link>
+          
+          {/* Stats below CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-8 flex items-center justify-center gap-8 text-sm text-gray-600"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-accent" />
+              <span><strong className="text-primary font-bold">50+</strong> Projects Delivered</span>
+            </div>
+            <div className="w-px h-4 bg-gray-300" />
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-secondary" />
+              <span><strong className="text-primary font-bold">98%</strong> Client Satisfaction</span>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </>
+    </section>
   );
 }

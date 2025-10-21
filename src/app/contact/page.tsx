@@ -201,8 +201,8 @@ export default function ContactPage() {
                       >
                         <option value="">Select a service</option>
                         <option value="website">Website Development</option>
-                        <option value="google-ads">Google Ads</option>
-                        <option value="social-ads">Social Media Ads</option>
+                        <option value="paid-advertising">Paid Advertising</option>
+                        <option value="paid-advertising">Paid Advertising</option>
                         <option value="strategy">Digital Strategy</option>
                         <option value="other">Other</option>
                       </select>

@@ -47,13 +47,13 @@ const services = [
     },
   },
   {
-    id: "google-ads",
+    id: "paid-advertising",
     icon: TrendingUp,
-    title: "Google Ads Management",
-    tagline: "Dominate Search Results",
+    title: "Paid Advertising",
+    tagline: "Maximize ROI Across Channels",
     description:
-      "Our Google Ads specialists craft campaigns that put you in front of customers actively searching for your services. We optimize every dollar for maximum ROI.",
-    image: "/images/services/service-google-ads.png",
+      "Integrated paid advertising across Google, Facebook, Instagram, TikTok and more — data-driven campaigns that maximize ROI and reduce CPA.",
+    image: "/images/services/service-paid-ads.png",
     benefits: [
       "Strategic keyword research and targeting",
       "Compelling ad copy that converts",
@@ -72,51 +72,65 @@ const services = [
       { step: "Optimize", detail: "Monitor, test, and refine continuously" },
     ],
     caseStudy: {
-      title: "SaaS Lead Generation",
+      title: "Omnichannel Lead Generation",
       metric: "45% reduction in CPA",
       description:
-        "We took over a SaaS company's Google Ads and reduced their cost per acquisition by 45% while doubling lead volume.",
+        "We combined search and social channels for a SaaS client, reducing CPA by 45% while increasing qualified leads.",
     },
   },
   {
-    id: "social-ads",
-    icon: Share2,
-    title: "Social Media Advertising",
-    tagline: "Reach Your Audience Where They Are",
+    id: "app-development",
+    icon: Code,
+    title: "App Development",
+    tagline: "Mobile-first Experiences",
     description:
-      "From Facebook to TikTok, we create scroll-stopping ads that drive engagement and conversions. Our data-driven approach ensures your budget works harder.",
-    image: "/images/services/service-social-ads.png",
+      "Native and cross-platform mobile applications with thoughtful UX and reliable backend integrations.",
+    image: "/images/services/service-app-development.png",
     benefits: [
-      "Multi-platform campaign management",
-      "Precise audience targeting and retargeting",
-      "Creative ad design and copywriting",
-      "Video and carousel ad production",
-      "Influencer partnership coordination",
-      "Real-time campaign optimization",
+      "iOS & Android development",
+      "Cross-platform (React Native / Flutter)",
+      "API & 3rd-party integrations",
+      "App Store deployment and ASO",
+      "Ongoing support and updates",
     ],
     process: [
-      {
-        step: "Research",
-        detail: "Identify target audiences and platforms",
-      },
-      {
-        step: "Creative",
-        detail: "Design ads that stop the scroll",
-      },
-      {
-        step: "Launch",
-        detail: "Deploy campaigns with strategic targeting",
-      },
-      {
-        step: "Scale",
-        detail: "Analyze and scale winning campaigns",
-      },
+      { step: "Discovery", detail: "Requirements, users and technical scope" },
+      { step: "Design", detail: "UX/UI and interactive prototypes" },
+      { step: "Development", detail: "Implementation, testing and QA" },
+      { step: "Launch", detail: "Deployment and monitoring" },
     ],
     caseStudy: {
-      title: "Fashion Brand Viral Campaign",
-      metric: "2M+ impressions in 30 days",
+      title: "Consumer App Launch",
+      metric: "150k+ downloads",
       description:
-        "Our TikTok and Instagram campaign for a fashion startup generated over 2 million impressions and 15,000 new customers.",
+        "Built and launched a consumer app that reached 150k downloads within 6 months through product-led growth and paid acquisition.",
+    },
+  },
+  {
+    id: "branding",
+    icon: Share2,
+    title: "Branding & Graphics",
+    tagline: "Make Your Brand Memorable",
+    description:
+      "Logo systems, visual identity, and marketing collateral that communicate your brand's voice and value.",
+    image: "/images/services/service-branding.png",
+    benefits: [
+      "Logo & identity systems",
+      "Brand guidelines",
+      "Marketing collateral",
+      "Social and ad creative",
+    ],
+    process: [
+      { step: "Discovery", detail: "Brand audit and positioning" },
+      { step: "Concepts", detail: "Direction and visual exploration" },
+      { step: "Refinement", detail: "Iterate and finalize assets" },
+      { step: "Delivery", detail: "Guidelines and source files" },
+    ],
+    caseStudy: {
+      title: "Rebrand & Relaunch",
+      metric: "+80% brand recall",
+      description:
+        "Led a full rebrand that improved brand recall and lifted campaign performance across channels.",
     },
   },
   {

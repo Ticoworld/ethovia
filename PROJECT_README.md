@@ -82,7 +82,7 @@ npm install
    You need to add images to the following directories in `public/images/`:
    
    - `hero/hero-main-3d.png` - Hero section background
-   - `services/` - 4 service images (service-web-development.png, service-google-ads.png, service-social-ads.png, service-strategy.png)
+  - `services/` - service images (service-web-development.png, service-paid-ads.png, service-app-development.png, service-branding.png, service-strategy.png)
    - `process/` - 4 process step images (process-discover.png, process-design.png, process-develop.png, process-optimize.png)
    - `portfolio/` - 3 portfolio images (portfolio-placeholder-1.png, portfolio-placeholder-2.png, portfolio-placeholder-3.png)
    - `about/` - 2 about images (about-team-illustration.png, about-mission.png)

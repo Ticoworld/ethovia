@@ -22,8 +22,7 @@ const footerLinks = {
   ],
   services: [
     { name: "Website Development", href: "/services#web-development" },
-    { name: "Google Ads", href: "/services#google-ads" },
-    { name: "Social Media Ads", href: "/services#social-ads" },
+    { name: "Paid Advertising", href: "/services#paid-advertising" },
     { name: "Digital Strategy", href: "/services#strategy" },
   ],
 };
@@ -95,7 +94,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               {footerLinks.quickLinks.map((link) => (
-                <li key={link.name}>
+                <li key={`${link.name}-${link.href}`}>
                   <Link
                     href={link.href}
                     className="text-white/70 hover:text-accent transition-colors duration-300 text-sm"
@@ -114,7 +113,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
-                <li key={link.name}>
+                <li key={`${link.name}-${link.href}`}>
                   <Link
                     href={link.href}
                     className="text-white/70 hover:text-accent transition-colors duration-300 text-sm"
