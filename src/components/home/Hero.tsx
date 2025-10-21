@@ -58,7 +58,7 @@ export default function Hero() {
       {/* Background Image with Parallax */}
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <Image
-          src="/images/hero/hero-main-3d.png"
+          src="/images/background/hero-bg.png"
           alt="Hero background"
           fill
           className="object-cover scale-100"

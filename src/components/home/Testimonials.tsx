@@ -74,11 +74,28 @@ export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const [paused, setPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-  // reduce threshold so swipes feel responsive on touch devices
-  const swipeConfidenceThreshold = 500;
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) paginate(1);
+    if (isRightSwipe) paginate(-1);
   };
 
   const paginate = useCallback((newDirection: number) => {
@@ -156,36 +173,29 @@ export default function Testimonials() {
 
         {/* Carousel Container */}
         <div
-          className="relative max-w-7xl mx-auto"
+          className="relative max-w-7xl mx-auto px-8 sm:px-12 md:px-4"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <div className="overflow-hidden">
             <motion.div
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={1}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x);
-
-                if (swipe < -swipeConfidenceThreshold) {
-                  paginate(1);
-                } else if (swipe > swipeConfidenceThreshold) {
-                  paginate(-1);
-                }
-              }}
+              key={currentIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
             >
               {getVisibleTestimonials().map((testimonial) => (
-                <motion.div
+                <div
                   key={testimonial.id}
                   className="w-full"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ y: { type: "spring", stiffness: 300, damping: 30 }, opacity: { duration: 0.25 } }}
                 >
                   <TestimonialCard testimonial={testimonial} />
-                </motion.div>
+                </div>
               ))}
             </motion.div>
           </div>
@@ -193,17 +203,17 @@ export default function Testimonials() {
           {/* Navigation Arrows */}
           <button
             onClick={() => paginate(-1)}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 bg-white hover:bg-gray-50 text-primary p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-10 group focus:outline-none focus:ring-2 focus:ring-accent"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:translate-x-0 lg:-translate-x-8 bg-white hover:bg-gray-50 text-primary p-2 sm:p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-10 group focus:outline-none focus:ring-2 focus:ring-accent"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
           </button>
           <button
             onClick={() => paginate(1)}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 bg-white hover:bg-gray-50 text-primary p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-10 group focus:outline-none focus:ring-2 focus:ring-accent"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-0 lg:translate-x-8 bg-white hover:bg-gray-50 text-primary p-2 sm:p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-10 group focus:outline-none focus:ring-2 focus:ring-accent"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
           </button>
 
           {/* Dots Navigation (per page) */}

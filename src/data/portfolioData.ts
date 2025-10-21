@@ -36,7 +36,7 @@ export const portfolioData: CaseStudy[] = [
     client: "TechGear Online",
     category: "Web Development",
     date: "Q2 2024",
-    heroImage: "/images/portfolio/portfolio-placeholder-1.png",
+    heroImage: "/images/portfolio/ecommerce-transformation.png",
     excerpt: "Complete redesign that tripled conversion rates",
     challenge:
       "TechGear Online was struggling with an outdated website that had poor mobile experience, slow load times, and a confusing checkout process. Their conversion rate was below 1%, and cart abandonment was at 75%.",
@@ -91,7 +91,7 @@ export const portfolioData: CaseStudy[] = [
     client: "FitLife Nutrition",
     category: "Paid Ads",
     date: "Q3 2024",
-    heroImage: "/images/portfolio/portfolio-placeholder-2.png",
+    heroImage: "/images/portfolio/social-media-campaign.png",
     excerpt: "Multi-platform campaign generating 2M+ impressions",
     challenge:
       "FitLife Nutrition needed to expand their market reach and build brand awareness among health-conscious millennials and Gen Z consumers. Their previous campaigns had low engagement and poor ROI.",
@@ -146,7 +146,7 @@ export const portfolioData: CaseStudy[] = [
     client: "CloudSync Pro",
     category: "Web Development",
     date: "Q4 2023",
-    heroImage: "/images/portfolio/portfolio-placeholder-3.png",
+    heroImage: "/images/portfolio/saas-product-launch.png",
     excerpt: "Full-stack marketing for successful product launch",
     challenge:
       "CloudSync Pro was launching a new cloud storage solution in a competitive market. They needed a professional website, landing pages, and a comprehensive digital marketing strategy to attract early adopters and establish credibility.",
@@ -201,7 +201,7 @@ export const portfolioData: CaseStudy[] = [
     client: "BeautyGlow Cosmetics",
     category: "Social Media",
     date: "Q1 2024",
-    heroImage: "/images/portfolio/portfolio-placeholder-1.png",
+    heroImage: "/images/portfolio/instagram-influencer-campaign.png",
     excerpt: "Viral campaign with 15K new customers",
     challenge:
       "BeautyGlow Cosmetics wanted to launch their new product line but had limited brand recognition. They needed to quickly build credibility and reach their target demographic of young women aged 18-35.",
@@ -256,7 +256,7 @@ export const portfolioData: CaseStudy[] = [
     client: "Elite Legal Services",
     category: "Paid Ads",
     date: "Q2 2024",
-    heroImage: "/images/portfolio/portfolio-placeholder-2.png",
+    heroImage: "/images/portfolio/google-ads-optimization.png",
     excerpt: "45% reduction in CPA with doubled lead volume",
     challenge:
       "Elite Legal Services was spending heavily on Google Ads but seeing poor results. Their cost per acquisition was too high, and many leads were unqualified. They needed a complete overhaul of their paid search strategy.",
@@ -311,7 +311,7 @@ export const portfolioData: CaseStudy[] = [
     client: "Bella Cucina Restaurant",
     category: "Web Development",
     date: "Q3 2024",
-    heroImage: "/images/portfolio/portfolio-placeholder-3.png",
+    heroImage: "/images/portfolio/restaurant-website-redesign.png",
     excerpt: "Mobile-first design boosting reservations by 200%",
     challenge:
       "Bella Cucina's outdated website was not mobile-friendly and lacked online reservation capabilities. They were losing customers to competitors with better online presence and missing out on the growing trend of online ordering.",

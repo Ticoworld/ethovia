@@ -1,32 +1,32 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, Target, Sparkles, Rocket } from "lucide-react";
+import ApproachCard from "./ApproachCard";
 
 const principles = [
   {
     id: 1,
-    icon: Zap,
     title: "Speed",
     description: "Lightning-fast execution without compromising quality",
+    img: "/images/approach/speed-illustration.png",
   },
   {
     id: 2,
-    icon: Target,
     title: "Precision",
     description: "Data-driven strategies that hit the mark every time",
+    img: "/images/approach/precision-illustration.png",
   },
   {
     id: 3,
-    icon: Sparkles,
     title: "Innovation",
     description: "Cutting-edge solutions that set you apart",
+    img: "/images/approach/innovation-illustration.png",
   },
   {
     id: 4,
-    icon: Rocket,
     title: "Growth",
     description: "Scalable systems built for exponential success",
+    img: "/images/approach/growth-illustration.png",
   },
 ];
 
@@ -54,43 +54,13 @@ export default function Stats() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {principles.map((principle, index) => (
-            <motion.div
-              key={principle.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="group relative"
-            >
-              {/* Card background with hover effect */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-white/0 rounded-2xl border border-white/10 transition-all duration-300 group-hover:from-white/10 group-hover:border-accent/50" />
-              
-              {/* Card content */}
-              <div className="relative p-8">
-                {/* Icon */}
-                <div className="mb-6">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#4A9FFF] to-[#00F0FF] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                    <principle.icon className="w-8 h-8 text-white drop-shadow-md" strokeWidth={2.5} />
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 transition-colors duration-200 group-hover:text-[#00F0FF]">
-                  {principle.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-base text-white/70 leading-relaxed">
-                  {principle.description}
-                </p>
-              </div>
-
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent rounded-2xl blur-xl" />
-              </div>
-            </motion.div>
+          {principles.map((p) => (
+            <ApproachCard
+              key={p.id}
+              title={p.title}
+              description={p.description}
+              imgSrc={p.img}
+            />
           ))}
         </div>
       </div>
