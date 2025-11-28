@@ -87,7 +87,7 @@ export const portfolioData: CaseStudy[] = [
   {
     id: 2,
     slug: "social-media-campaign",
-    title: "Social Media Campaign",
+    title: "Facebook and Instagram Ads",
     client: "FitLife Nutrition",
     category: "Paid Ads",
     date: "Q3 2024",
@@ -141,63 +141,8 @@ export const portfolioData: CaseStudy[] = [
   },
   {
     id: 3,
-    slug: "saas-product-launch",
-    title: "SaaS Product Launch",
-    client: "CloudSync Pro",
-    category: "Web Development",
-    date: "Q4 2023",
-    heroImage: "/images/portfolio/saas-product-launch.png",
-    excerpt: "Full-stack marketing for successful product launch",
-    challenge:
-      "CloudSync Pro was launching a new cloud storage solution in a competitive market. They needed a professional website, landing pages, and a comprehensive digital marketing strategy to attract early adopters and establish credibility.",
-    solution:
-      "We built a high-performance website with interactive product demos, created conversion-optimized landing pages, and implemented SEO best practices. Launched coordinated Google Ads and content marketing campaigns to drive qualified traffic.",
-    results: [
-      {
-        iconName: "Users",
-        metric: "12K",
-        label: "Sign-ups in First Month",
-        detail: "Exceeded target by 240%",
-      },
-      {
-        iconName: "TrendingUp",
-        metric: "28%",
-        label: "Conversion Rate",
-        detail: "Landing page to trial sign-up",
-      },
-      {
-        iconName: "Star",
-        metric: "4.8/5",
-        label: "Product Rating",
-        detail: "From 850+ reviews",
-      },
-      {
-        iconName: "DollarSign",
-        metric: "$450K",
-        label: "MRR After 3 Months",
-        detail: "Monthly recurring revenue",
-      },
-    ],
-    testimonial: {
-      quote:
-        "Ethovia was instrumental in our successful product launch. Their expertise in web development and digital marketing helped us achieve our first-year goals in just three months. Incredible team!",
-      author: "Jennifer Lee",
-      position: "Founder & CEO, CloudSync Pro",
-      avatar: "/images/icons/avatar-placeholder.png",
-    },
-    technologies: [
-      "Next.js 15",
-      "React",
-      "TypeScript",
-      "Prisma",
-      "PostgreSQL",
-      "Google Ads",
-    ],
-  },
-  {
-    id: 4,
     slug: "instagram-influencer",
-    title: "Instagram Influencer Campaign",
+    title: "Social Media Management",
     client: "BeautyGlow Cosmetics",
     category: "Social Media",
     date: "Q1 2024",
@@ -249,10 +194,39 @@ export const portfolioData: CaseStudy[] = [
       "Later",
     ],
   },
+  // Added: Real estate website/ads case study
+  {
+    id: 4,
+    slug: "real-estate-website-ads",
+    title: "Real Estate Website/Ads",
+    client: "PrimeLiving Realty",
+    category: "Web Development",
+    date: "Q2 2024",
+    heroImage: "/images/services/service-realestate-website-ads.png",
+    excerpt: "Lead-gen focused site and ads for property listings",
+    challenge:
+      "PrimeLiving needed a modern property site with MLS integrations and a proven ad engine to capture seller and buyer leads in competitive locales.",
+    solution:
+      "Built a conversion-focused real estate website, integrated listings search, and launched targeted Google/Facebook lead ads with smart audience segmentation.",
+    results: [
+      { iconName: "Users", metric: "3x", label: "Qualified Leads", detail: "Month-over-month growth" },
+      { iconName: "TrendingUp", metric: "+62%", label: "CTR", detail: "Across paid channels" },
+      { iconName: "DollarSign", metric: "$98", label: "CPL", detail: "Average cost per lead" },
+    ],
+    testimonial: {
+      quote:
+        "Our pipeline exploded after the site went live. The ads consistently bring in high-intent buyers and sellers.",
+      author: "Daniel Brooks",
+      position: "Broker, PrimeLiving Realty",
+      avatar: "/images/icons/avatar-placeholder.png",
+    },
+    technologies: ["Next.js 14", "TypeScript", "Tailwind CSS", "Google Ads", "Facebook Ads"],
+  },
+  // Existing: Google & YouTube Ads Optimization
   {
     id: 5,
     slug: "google-ads-optimization",
-    title: "Google Ads Optimization",
+    title: "Google & YouTube Ads Optimization",
     client: "Elite Legal Services",
     category: "Paid Ads",
     date: "Q2 2024",
@@ -263,30 +237,10 @@ export const portfolioData: CaseStudy[] = [
     solution:
       "We conducted comprehensive keyword research, restructured campaigns with tightly themed ad groups, implemented negative keywords, created compelling ad copy with strong CTAs, and optimized landing pages for conversion. Set up advanced conversion tracking and remarketing.",
     results: [
-      {
-        iconName: "DollarSign",
-        metric: "45%",
-        label: "Reduction in CPA",
-        detail: "From $285 to $157 per lead",
-      },
-      {
-        iconName: "TrendingUp",
-        metric: "118%",
-        label: "Increase in Leads",
-        detail: "Same ad budget, better targeting",
-      },
-      {
-        iconName: "Target",
-        metric: "78%",
-        label: "Lead Quality Score",
-        detail: "Up from 42% qualified leads",
-      },
-      {
-        iconName: "Star",
-        metric: "8.5/10",
-        label: "Quality Score Average",
-        detail: "Improved from 4.2/10",
-      },
+      { iconName: "DollarSign", metric: "45%", label: "Reduction in CPA", detail: "From $285 to $157 per lead" },
+      { iconName: "TrendingUp", metric: "118%", label: "Increase in Leads", detail: "Same ad budget, better targeting" },
+      { iconName: "Target", metric: "78%", label: "Lead Quality Score", detail: "Up from 42% qualified leads" },
+      { iconName: "Star", metric: "8.5/10", label: "Quality Score Average", detail: "Improved from 4.2/10" },
     ],
     testimonial: {
       quote:
@@ -295,69 +249,35 @@ export const portfolioData: CaseStudy[] = [
       position: "Managing Partner, Elite Legal Services",
       avatar: "/images/icons/avatar-placeholder.png",
     },
-    technologies: [
-      "Google Ads",
-      "Google Tag Manager",
-      "Google Analytics 4",
-      "Unbounce",
-      "CallRail",
-      "Looker Studio",
-    ],
+    technologies: ["Google Ads", "Google Tag Manager", "Google Analytics 4", "Unbounce", "CallRail", "Looker Studio"],
   },
+  // Added: App Development case study
   {
     id: 6,
-    slug: "restaurant-redesign",
-    title: "Restaurant Website Redesign",
-    client: "Bella Cucina Restaurant",
-    category: "Web Development",
+    slug: "app-development",
+    title: "App Development",
+    client: "SwiftGo Mobility",
+    category: "App Development",
     date: "Q3 2024",
-    heroImage: "/images/portfolio/restaurant-website-redesign.png",
-    excerpt: "Mobile-first design boosting reservations by 200%",
+    heroImage: "/images/services/service-app-development.png",
+    excerpt: "Cross-platform app delivering fast onboarding and high retention",
     challenge:
-      "Bella Cucina's outdated website was not mobile-friendly and lacked online reservation capabilities. They were losing customers to competitors with better online presence and missing out on the growing trend of online ordering.",
+      "SwiftGo needed a reliable mobile app with seamless auth, offline caching and real-time updates to scale to thousands of daily users.",
     solution:
-      "We created a stunning mobile-first website with integrated online reservations, menu management system, and seamless online ordering integration. Implemented local SEO optimization and added high-quality food photography galleries to showcase their dishes.",
+      "Delivered a cross-platform app with robust backend integrations, analytics, and a polished UX to drive engagement and retention.",
     results: [
-      {
-        iconName: "ShoppingCart",
-        metric: "200%",
-        label: "Increase in Reservations",
-        detail: "Online booking system impact",
-      },
-      {
-        iconName: "DollarSign",
-        metric: "$180K",
-        label: "Additional Revenue",
-        detail: "From online orders in 6 months",
-      },
-      {
-        iconName: "Eye",
-        metric: "85%",
-        label: "Mobile Traffic",
-        detail: "Perfect responsive experience",
-      },
-      {
-        iconName: "Star",
-        metric: "#1",
-        label: "Google Maps Ranking",
-        detail: "For local restaurant searches",
-      },
+      { iconName: "Users", metric: "25K", label: "MAU", detail: "Within 60 days of launch" },
+      { iconName: "Star", metric: "4.7/5", label: "App Store Rating", detail: "Across iOS and Android" },
+      { iconName: "TrendingUp", metric: "+38%", label: "Retention", detail: "Month 2 vs Month 1" },
     ],
     testimonial: {
       quote:
-        "The new website has transformed our business. Online reservations have tripled, and we're seeing customers we never reached before. Ethovia understood our vision and delivered beyond expectations.",
-      author: "Antonio Rossi",
-      position: "Owner, Bella Cucina Restaurant",
+        "The app is rock solid and users love it. Ethovia nailed the UX and performance.",
+      author: "Priya Nair",
+      position: "Product Lead, SwiftGo Mobility",
       avatar: "/images/icons/avatar-placeholder.png",
     },
-    technologies: [
-      "Next.js 14",
-      "TypeScript",
-      "Tailwind CSS",
-      "OpenTable API",
-      "Stripe",
-      "Google My Business",
-    ],
+    technologies: ["React Native", "TypeScript", "Firebase", "Stripe"],
   },
 ];
 

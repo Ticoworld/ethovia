@@ -9,35 +9,35 @@ import SectionTitle from "@/components/common/SectionTitle";
 import { useState } from "react";
 
 const services = [
-  // Primary services (larger cards)
+  // Primary services (larger cards) — ordered per owner request
   {
     id: 1,
-    title: "Website Development",
+    title: "Real estate website/ads",
     description:
-      "Custom websites that are fast, beautiful, and conversion-focused",
-    image: "/images/services/service-web-development.png",
+      "High-converting real estate websites and targeted ads for lead generation",
+    image: "/images/services/service-realestate-website-ads.png",
     icon: Code,
-    href: "/services#web-development",
+    href: "/services#real-estate",
     size: "large",
   },
   {
     id: 2,
-    title: "Paid Advertising",
-    description:
-      "Integrated paid campaigns across Google, Facebook, Instagram, TikTok and more — optimized for ROI",
-    image: "/images/services/service-paid-ads.png",
-    icon: TrendingUp,
-    href: "/services#paid-advertising",
-    size: "large",
-  },
-  {
-    id: 3,
     title: "App Development",
     description:
       "Native and cross-platform mobile apps with polished UX and robust backend integrations",
     image: "/images/services/service-app-development.png",
     icon: Code,
     href: "/services#app-development",
+    size: "large",
+  },
+  {
+    id: 3,
+    title: "Social media management",
+    description:
+      "Full-funnel social management: content, scheduling, community and performance",
+    image: "/images/services/service-social-ads.png",
+    icon: TrendingUp,
+    href: "/services#social-media-management",
     size: "large",
   },
   // Supporting services (medium cards)
