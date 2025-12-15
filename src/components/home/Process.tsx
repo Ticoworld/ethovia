@@ -9,29 +9,37 @@ const processSteps = [
   {
     id: 1,
     number: "01",
-    title: "Discover",
-    description: "We analyze your business, competitors, and target audience to create a solid foundation for success",
+    title: "Discovery & Strategy",
+    timeline: "Day 1-3",
+    description:
+      "We analyze your market and local competitors to build a roadmap that actually works in Nigeria.",
     image: "/images/process/process-discover.png",
   },
   {
     id: 2,
     number: "02",
-    title: "Design",
-    description: "Creative concepts that align with your brand and goals, ensuring maximum impact and engagement",
+    title: "Mobile-First Design",
+    timeline: "Week 1",
+    description:
+      "We design lightweight, high-speed visuals optimized for Nigerian mobile networks and user habits.",
     image: "/images/process/process-design.png",
   },
   {
     id: 3,
     number: "03",
-    title: "Develop",
-    description: "Build and optimize for performance, conversions, and exceptional user experience",
+    title: "Build & Integrate",
+    timeline: "Week 2-3",
+    description:
+      "Development phase. We integrate local tools like Paystack, WhatsApp, and ensure 99% uptime.",
     image: "/images/process/process-develop.png",
   },
   {
     id: 4,
     number: "04",
-    title: "Optimize",
-    description: "Continuous testing, refinement, and improvement for maximum results and sustained growth",
+    title: "Launch & Scale",
+    timeline: "Week 4",
+    description:
+      "Go live. We monitor your traffic, tweak performance, and hand over a system ready for growth.",
     image: "/images/process/process-optimize.png",
   },
 ];
@@ -47,16 +55,20 @@ export default function Process() {
   const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const yGradient1 = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const yGradient2 = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.8, 1],
+    [0.6, 1, 1, 0.6]
+  );
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="relative py-32 lg:py-48 overflow-hidden lg:-mt-24 z-20"
     >
       {/* Multi-layer Parallax Background */}
-      <motion.div 
-        style={{ y: yBackground, opacity }} 
+      <motion.div
+        style={{ y: yBackground, opacity }}
         className="absolute inset-0 z-0"
       >
         <Image
@@ -69,14 +81,20 @@ export default function Process() {
           priority
         />
         {/* Dynamic overlay that changes on scroll */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-black/60"
-          style={{ opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 0.7, 0.5]) }}
+          style={{
+            opacity: useTransform(
+              scrollYProgress,
+              [0, 0.5, 1],
+              [0.6, 0.7, 0.5]
+            ),
+          }}
         />
       </motion.div>
-      
+
       {/* Animated Decorative Gradients with Parallax */}
-      <motion.div 
+      <motion.div
         style={{ y: yGradient1 }}
         className="absolute top-0 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[128px] z-0"
         animate={{
@@ -89,7 +107,7 @@ export default function Process() {
           ease: "easeInOut",
         }}
       />
-      <motion.div 
+      <motion.div
         style={{ y: yGradient2 }}
         className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[128px] z-0"
         animate={{
@@ -106,7 +124,7 @@ export default function Process() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionTitle
           title="How We Work"
-          subtitle="Our proven 4-step process for delivering exceptional results that exceed expectations"
+          subtitle="From idea to launch in 4 weeks. Optimized for speed and quality."
           light
         />
 
@@ -114,7 +132,7 @@ export default function Process() {
         <div className="hidden lg:block mt-20">
           <div className="relative">
             {/* Animated Connection Line */}
-            <motion.div 
+            <motion.div
               className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent transform -translate-y-1/2 rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -129,18 +147,18 @@ export default function Process() {
                   initial={{ opacity: 0, y: 80 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ 
-                    duration: 0.5, 
+                  transition={{
+                    duration: 0.5,
                     delay: index * 0.1,
-                    ease: "easeOut"
+                    ease: "easeOut",
                   }}
                   className="relative group"
                 >
                   {/* Number Badge with Pulse Animation */}
                   <div className="flex justify-center mb-8">
-                    <motion.div 
+                    <motion.div
                       className="relative w-24 h-24 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white font-bold text-4xl border-4 border-accent shadow-2xl shadow-accent/40"
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.15,
                         rotate: 5,
                         borderColor: "#ffffff",
@@ -165,9 +183,9 @@ export default function Process() {
                   </div>
 
                   {/* Image Card */}
-                  <motion.div 
+                  <motion.div
                     className="relative h-64 rounded-2xl overflow-hidden mb-6 bg-white border-4 border-white shadow-2xl"
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
                       borderColor: "#00F0FF",
                     }}
@@ -183,7 +201,7 @@ export default function Process() {
                     />
                     {/* Gradient overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
+
                     {/* Corner accent */}
                     <div className="absolute top-0 right-0 w-16 h-16 bg-accent/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-full group-hover:translate-x-0">
                       <div className="absolute bottom-0 left-0 w-full h-full border-l-4 border-b-4 border-accent rounded-bl-2xl" />
@@ -192,7 +210,10 @@ export default function Process() {
 
                   {/* Content */}
                   <div className="text-center">
-                    <motion.h3 
+                    <span className="inline-block bg-[#00F0FF] text-primary px-4 py-1.5 rounded-full text-xs font-bold tracking-wider mb-3 uppercase shadow-lg shadow-[#00F0FF]/50">
+                      {step.timeline}
+                    </span>
+                    <motion.h3
                       className="text-2xl md:text-3xl font-bold text-white mb-4 transition-colors duration-300 group-hover:text-accent"
                       whileHover={{ scale: 1.05 }}
                     >
@@ -226,11 +247,11 @@ export default function Process() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="relative flex items-start group"
+              className="relative flex flex-col md:flex-row items-center md:items-start group"
             >
               {/* Animated Vertical Line */}
               {index < processSteps.length - 1 && (
-                <motion.div 
+                <motion.div
                   className="absolute left-8 top-28 bottom-0 w-1 bg-gradient-to-b from-accent via-secondary to-transparent rounded-full transform -translate-x-1/2"
                   initial={{ scaleY: 0, originY: 0 }}
                   whileInView={{ scaleY: 1 }}
@@ -240,8 +261,8 @@ export default function Process() {
               )}
 
               {/* Number Badge */}
-              <div className="flex-shrink-0 mr-6 relative z-10">
-                <motion.div 
+              <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6 relative z-10">
+                <motion.div
                   className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white font-bold text-2xl border-4 border-accent shadow-2xl shadow-accent/40"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ duration: 0.3 }}
@@ -251,9 +272,9 @@ export default function Process() {
               </div>
 
               {/* Content Card */}
-              <motion.div 
+              <motion.div
                 className="flex-grow bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden border-4 border-white shadow-2xl"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   borderColor: "#00F0FF",
                 }}
@@ -271,6 +292,9 @@ export default function Process() {
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="p-8">
+                  <span className="inline-block bg-[#00F0FF] text-primary px-4 py-1.5 rounded-full text-xs font-bold tracking-wider mb-3 uppercase shadow-lg shadow-[#00F0FF]/50">
+                    {step.timeline}
+                  </span>
                   <h3 className="text-xl md:text-2xl font-bold text-primary mb-4 transition-colors duration-300 group-hover:text-accent">
                     {step.title}
                   </h3>
@@ -281,6 +305,15 @@ export default function Process() {
               </motion.div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Trust Footnote */}
+        <div className="mt-16 text-center">
+          <p className="text-white/60 text-sm md:text-base flex items-center justify-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            Proven Workflow: Over 50+ Nigerian projects delivered on time using
+            this system.
+          </p>
         </div>
       </div>
     </section>

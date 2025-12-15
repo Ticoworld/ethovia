@@ -4,43 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRef, useEffect } from "react";
-  // Animate the wavy SVG filter for the word IMPACT
-  
+import { useRef } from "react";
 
 export default function Hero() {
-    // Animate the wavy SVG filter for the word IMPACT
-
-    useEffect(() => {
-    let frameId: number;
-    const turb = document.getElementById('turb');
-    let t = 0;
-    function animate() {
-      t += 0.01;
-      if (turb) {
-        // Animate baseFrequency for a wavy effect
-        turb.setAttribute('baseFrequency', `${0.02 + Math.sin(t) * 0.008} 0.05`);
-      }
-      frameId = requestAnimationFrame(animate);
-    }
-    animate();
-    return () => cancelAnimationFrame(frameId);
-  }, []);
-    useEffect(() => {
-      let frameId: number;
-      let t = 0;
-      function animate() {
-        t += 0.01;
-        const turb = document.getElementById('turb');
-        if (turb) {
-          // Animate baseFrequency for a wavy effect
-          turb.setAttribute('baseFrequency', `${0.02 + Math.sin(t) * 0.008} 0.05`);
-        }
-        frameId = requestAnimationFrame(animate);
-      }
-      animate();
-      return () => cancelAnimationFrame(frameId);
-    }, []);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -65,9 +31,9 @@ export default function Hero() {
           priority
           quality={90}
         />
-  {/* Stronger overlay for better text readability */}
-  <div className="absolute inset-0 md:bg-black/30 bg-black/60" />
-  <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-primary/20  to-transparent" />
+        {/* Stronger overlay for better text readability */}
+        <div className="absolute inset-0 md:bg-black/30 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-primary/20  to-transparent" />
         {/* Subtle grain texture */}
       </motion.div>
 
@@ -80,52 +46,39 @@ export default function Hero() {
           {/* Small intro text */}
           {/* Removed badge */}
 
-          {/* Bold, Spaced Typography */}
+          {/* Bold, Corporate Typography - CRO Optimized */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-8 leading-[0.9] tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight"
+            style={{
+              fontFamily: "'Inter', 'Space Grotesk', sans-serif",
+              textShadow: "0 4px 32px rgba(0,0,0,0.25)",
+            }}
           >
-            <span className="block">WE MAKE</span>
-            <span
-              className="block animate-gradient"
-              style={{
-                color: '#fff',
-                filter: 'url(#wavy-filter)',
-                display: 'inline-block',
-                fontFamily: 'inherit',
-                letterSpacing: '0.05em',
-                fontWeight: 900,
-                textShadow: '0 4px 32px rgba(0,0,0,0.25), 0 1px 0 #000',
-              }}
-            >
-              IMPACT
-              <svg width="0" height="0">
-                <filter id="wavy-filter">
-                  <feTurbulence id="turb" baseFrequency="0.02 0.05" numOctaves="2" result="turb" seed="2"/>
-                  <feDisplacementMap in2="turb" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/>
-                </filter>
-              </svg>
+            <span className="block">Scale Your Business Online</span>
+            <span className="block">
+              with{" "}
+              <span className="text-gradient inline-block">Nigeria&apos;s</span>{" "}
+              Performance Agency
             </span>
           </motion.h1>
 
-          {/* Subheadline with better contrast */}
+          {/* Subheadline with value proposition */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl sm:text-2xl md:text-3xl text-white font-light mb-12 max-w-3xl leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-white/90 font-light mb-12 max-w-3xl leading-relaxed"
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.3)" }}
           >
-            For fast-moving brands that refuse to blend in.
-            <br />
-            <span className="text-white/80">
-              High-performance websites. Data-driven campaigns.
-            </span>
+            We build fast, mobile-first websites and data-driven ad campaigns
+            that turn Lagos traffic into paying customers.{" "}
+            <span className="font-medium text-white">No fluff, just ROI.</span>
           </motion.p>
 
-          {/* CTA Buttons with magnetic effect */}
+          {/* CTA Buttons - Low Friction CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -139,7 +92,7 @@ export default function Hero() {
                 className="relative px-8 py-4 bg-gradient-to-r from-secondary to-accent text-white rounded-full font-semibold text-lg overflow-hidden shadow-2xl shadow-accent/50 hover:shadow-accent/70 transition-shadow duration-300 border-2 border-white/60"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Start Your Project
+                  Get Free Strategy Audit
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 {/* Hover shine effect */}
@@ -159,12 +112,23 @@ export default function Hero() {
                 className="px-8 py-4 border-2 border-white/30 backdrop-blur-sm text-white rounded-full font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300"
               >
                 <span className="flex items-center gap-2">
-                  View Our Work
+                  See Real Results
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </motion.button>
             </Link>
           </motion.div>
+
+          {/* Trust Anchor */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-8 text-sm text-white/60 font-light"
+            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.3)" }}
+          >
+            Specializing in Real Estate, Fintech, and Retail Growth.
+          </motion.p>
 
           {/* Trusted by section (instead of fake stats) */}
           {/* Removed floating elements and trusted by section */}

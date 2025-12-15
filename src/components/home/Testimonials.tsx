@@ -2,7 +2,15 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Star,
+  ChevronLeft,
+  ChevronRight,
+  Heart,
+  TrendingUp,
+  UserPlus,
+  BadgeCheck,
+} from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import Card from "@/components/common/Card";
 import SectionTitle from "@/components/common/SectionTitle";
@@ -11,60 +19,30 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "Ethovia transformed our online presence completely. Our website traffic increased by 300% in just 3 months, and conversion rates doubled. Their strategic approach to SEO and content marketing exceeded all our expectations.",
-    name: "Sarah Johnson",
+      "Ethovia transformed our online presence. We went from getting zero leads to booking 5 inspections daily through the new website. Their understanding of the Nigerian real estate market is impressive.",
+    name: "Chinedu Okafor",
     position: "CEO",
-    company: "TechStart Inc.",
+    company: "Lagos Homes & Properties",
     avatar: "/images/testimonials/avatar-placeholder.png",
     rating: 5,
   },
   {
     id: 2,
     quote:
-      "Best ROI we've ever seen from a marketing agency. The team is incredibly responsive, and their data-driven strategies consistently deliver results. Highly recommended for any serious business.",
-    name: "Michael Chen",
-    position: "Founder & CEO",
-    company: "GrowthCo",
+      "Their digital strategy is top-notch. Our Instagram ads are finally converting into real sales. Highly recommended for any serious business looking to grow in Nigeria.",
+    name: "Amina Bello",
+    position: "Founder",
+    company: "StyleHive Boutique",
     avatar: "/images/testimonials/avatar-placeholder.png",
     rating: 5,
   },
   {
     id: 3,
     quote:
-      "Professional, responsive, and results-driven. They truly understand digital marketing in the modern landscape. Our brand visibility has skyrocketed since partnering with Ethovia.",
-    name: "Emily Rodriguez",
-    position: "Marketing Director",
-    company: "BrandX Solutions",
-    avatar: "/images/testimonials/avatar-placeholder.png",
-    rating: 5,
-  },
-  {
-    id: 4,
-    quote:
-      "Working with Ethovia has been a game-changer for our e-commerce business. Their innovative campaigns and attention to detail helped us achieve a 250% increase in online sales within 6 months.",
-    name: "David Park",
-    position: "E-commerce Manager",
-    company: "ShopFlow",
-    avatar: "/images/testimonials/avatar-placeholder.png",
-    rating: 5,
-  },
-  {
-    id: 5,
-    quote:
-      "The level of expertise and creativity that Ethovia brings to the table is unmatched. They don't just execute campaigns; they become true partners in your business growth journey.",
-    name: "Jennifer Williams",
-    position: "CMO",
-    company: "InnovateTech",
-    avatar: "/images/testimonials/avatar-placeholder.png",
-    rating: 5,
-  },
-  {
-    id: 6,
-    quote:
-      "From strategy to execution, Ethovia delivers excellence. Our social media engagement increased 400%, and we're finally reaching our target audience effectively. Worth every penny!",
-    name: "Robert Martinez",
-    position: "Brand Manager",
-    company: "NextGen Digital",
+      "Professional, timely, and they understand the Nigerian market. The new app UI is exactly what our customers needed. Our user engagement increased by 200%.",
+    name: "Tunde Bakare",
+    position: "Managing Director",
+    company: "SwiftPay Solutions",
     avatar: "/images/testimonials/avatar-placeholder.png",
     rating: 5,
   },
@@ -73,7 +51,6 @@ const testimonials = [
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1);
-  const [paused, setPaused] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
@@ -98,13 +75,18 @@ export default function Testimonials() {
     if (isRightSwipe) paginate(-1);
   };
 
-  const paginate = useCallback((newDirection: number) => {
-    setCurrentIndex((prevIndex) => {
-      const step = itemsPerPage;
-      const next = (prevIndex + newDirection * step + testimonials.length) % testimonials.length;
-      return next;
-    });
-  }, [itemsPerPage]);
+  const paginate = useCallback(
+    (newDirection: number) => {
+      setCurrentIndex((prevIndex) => {
+        const step = itemsPerPage;
+        const next =
+          (prevIndex + newDirection * step + testimonials.length) %
+          testimonials.length;
+        return next;
+      });
+    },
+    [itemsPerPage]
+  );
 
   // keyboard support: left/right arrows
   useEffect(() => {
@@ -138,13 +120,6 @@ export default function Testimonials() {
     });
   }, [itemsPerPage]);
 
-  // autoplay with pause-on-hover
-  useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => paginate(1), 5000);
-    return () => clearInterval(id);
-  }, [paused, paginate]);
-
   const totalPages = Math.max(1, Math.ceil(testimonials.length / itemsPerPage));
 
   // Calculate visible testimonials based on currentIndex and itemsPerPage
@@ -161,9 +136,9 @@ export default function Testimonials() {
       {/* Subtle decorative gradients */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-secondary/3 rounded-full blur-[100px]" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-accent/3 rounded-full blur-[100px]" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-12 lg:mb-16 ]">
           <SectionTitle
             title="What Clients Say"
             subtitle="Real results from real clients who trust us with their growth"
@@ -174,8 +149,6 @@ export default function Testimonials() {
         {/* Carousel Container */}
         <div
           className="relative max-w-7xl mx-auto px-8 sm:px-12 md:px-4"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
@@ -185,15 +158,11 @@ export default function Testimonials() {
               key={currentIndex}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 py-16 md:px-10"
             >
               {getVisibleTestimonials().map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="w-full"
-                >
+                <div key={testimonial.id} className="w-full">
                   <TestimonialCard testimonial={testimonial} />
                 </div>
               ))}
@@ -240,7 +209,8 @@ export default function Testimonials() {
                 "@context": "https://schema.org",
                 "@type": "CollectionPage",
                 name: "Client Testimonials - Ethovia",
-                description: "Real client testimonials and reviews showcasing results delivered by Ethovia.",
+                description:
+                  "Real client testimonials and reviews showcasing results delivered by Ethovia.",
                 mainEntity: testimonials.slice(0, 3).map((t) => ({
                   "@type": "Review",
                   author: t.name,
@@ -257,7 +227,9 @@ export default function Testimonials() {
 
           {/* screen reader announcement for slide changes */}
           <div className="sr-only" aria-live="polite">
-            {`${currentIndex + 1} of ${testimonials.length}: ${testimonials[currentIndex].name}`}
+            {`${currentIndex + 1} of ${testimonials.length}: ${
+              testimonials[currentIndex].name
+            }`}
           </div>
         </div>
 
@@ -269,19 +241,61 @@ export default function Testimonials() {
           transition={{ duration: 0.4, delay: 0.2 }}
           className="text-center mt-16"
         >
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="flex">
+          {/* Value Cards */}
+          {/* Value Stats - Minimalist Professional Design */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
+            {/* Stat 1 */}
+            <div className="flex flex-col items-center justify-center p-6 transition-transform hover:scale-105 duration-300">
+              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-4 text-primary">
+                <Heart className="w-8 h-8 fill-blue-500/20" />
+              </div>
+              <h3 className="text-2xl font-bold text-primary mb-2">
+                100% Committed
+              </h3>
+              <p className="text-gray-500 font-medium">Client Satisfaction</p>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center justify-center p-6 transition-transform hover:scale-105 duration-300">
+              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-4 text-primary">
+                <TrendingUp className="w-8 h-8 fill-blue-500/20" />
+              </div>
+              <h3 className="text-2xl font-bold text-primary mb-2">
+                Your Growth First
+              </h3>
+              <p className="text-gray-500 font-medium">Our Primary Goal</p>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex flex-col items-center justify-center p-6 transition-transform hover:scale-105 duration-300">
+              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-4 text-primary">
+                <UserPlus className="w-8 h-8 fill-blue-500/20" />
+              </div>
+              <h3 className="text-2xl font-bold text-primary mb-2">
+                Join Success
+              </h3>
+              <p className="text-gray-500 font-medium">Be Our Next Story</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center justify-center gap-3 mb-3">
+            <div className="flex gap-1">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 text-accent fill-accent" />
+                <Star
+                  key={i}
+                  className="w-6 h-6 text-yellow-400 fill-yellow-400 drop-shadow-sm"
+                  strokeWidth={1.5}
+                />
               ))}
             </div>
-            <span className="text-xl font-bold text-primary">5.0</span>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold text-primary">5.0</span>
+              <span className="text-gray-400 text-lg">/</span>
+              <span className="text-gray-600 font-medium">5.0 Rating</span>
+            </div>
           </div>
-          <p className="text-gray-600 font-medium">
-            Average rating from 50+ satisfied clients
-          </p>
-          <p className="text-gray-500 text-sm mt-1">
-            Trusted by innovative companies worldwide
+          <p className="text-gray-500 font-medium max-w-md mx-auto">
+            Join the Nigerian businesses scaling with Ethovia
           </p>
         </motion.div>
       </div>
@@ -290,7 +304,11 @@ export default function Testimonials() {
 }
 
 // Testimonial Card Component
-function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
+function TestimonialCard({
+  testimonial,
+}: {
+  testimonial: (typeof testimonials)[0];
+}) {
   return (
     <Card hover className="h-full group">
       <div className="p-6 lg:p-8 flex flex-col h-full">
@@ -310,7 +328,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
           {[...Array(testimonial.rating)].map((_, i) => (
             <Star
               key={i}
-              className="w-4 h-4 lg:w-5 lg:h-5 text-accent fill-accent transition-transform duration-200 group-hover:scale-110"
+              className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-500 fill-yellow-500 transition-transform duration-200 group-hover:scale-110"
               style={{ transitionDelay: `${i * 50}ms` }}
             />
           ))}
@@ -332,12 +350,13 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
             />
           </div>
           <div>
-            <div className="font-bold text-primary text-base group-hover:text-secondary transition-colors duration-200">
-              {testimonial.name}
+            <div className="flex items-center mb-1">
+              <span className="font-bold text-primary text-base group-hover:text-secondary transition-colors duration-200">
+                {testimonial.name}
+              </span>
+              <BadgeCheck className="w-5 h-5 text-blue-500 ml-2 inline-block" />
             </div>
-            <div className="text-sm text-gray-600">
-              {testimonial.position}
-            </div>
+            <div className="text-sm text-gray-600">{testimonial.position}</div>
             <div className="text-xs text-gray-500 font-medium mt-0.5">
               {testimonial.company}
             </div>

@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import SmoothClient from "@/components/common/SmoothClient";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -62,7 +63,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="overflow-x-hidden">
       <head>
-        <link rel="icon" type="image/png" href="/images/logo/ethovia-logo.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/images/logo/ethovia-logo.png"
+        />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased overflow-x-hidden`}
@@ -72,8 +77,8 @@ export default function RootLayout({
         <main className="min-h-screen overflow-x-hidden">{children}</main>
         <Footer />
         <ScrollToTop />
+        <WhatsAppButton />
       </body>
     </html>
   );
 }
-

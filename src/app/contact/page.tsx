@@ -10,7 +10,7 @@ import {
   Phone,
   MapPin,
   Clock,
-  Linkedin,
+  Send,
   Twitter,
   Facebook,
   Instagram,
@@ -77,7 +77,8 @@ export default function ContactPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto drop-shadow"
           >
-            Let&apos;s discuss your project and how we can help you achieve your goals
+            Let&apos;s discuss your project and how we can help you achieve your
+            goals
           </motion.p>
         </div>
       </section>
@@ -178,7 +179,7 @@ export default function ContactPage() {
                         type="tel"
                         id="phone"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent transition-colors"
-                        placeholder="+1 (234) 567-890"
+                        placeholder="+234 XXX XXX XXXX"
                       />
                     </div>
                   </div>
@@ -201,8 +202,12 @@ export default function ContactPage() {
                       >
                         <option value="">Select a service</option>
                         <option value="website">Website Development</option>
-                        <option value="paid-advertising">Paid Advertising</option>
-                        <option value="paid-advertising">Paid Advertising</option>
+                        <option value="paid-advertising">
+                          Paid Advertising
+                        </option>
+                        <option value="paid-advertising">
+                          Paid Advertising
+                        </option>
                         <option value="strategy">Digital Strategy</option>
                         <option value="other">Other</option>
                       </select>
@@ -228,11 +233,11 @@ export default function ContactPage() {
                         }`}
                       >
                         <option value="">Select budget range</option>
-                        <option value="<5k">&lt;$5,000</option>
-                        <option value="5k-10k">$5,000 - $10,000</option>
-                        <option value="10k-25k">$10,000 - $25,000</option>
-                        <option value="25k+">$25,000+</option>
-                        <option value="not-sure">Not Sure</option>
+                        <option value="200k-500k">₦200k - ₦500k</option>
+                        <option value="500k-1m">₦500k - ₦1M</option>
+                        <option value="1m-3m">₦1M - ₦3M</option>
+                        <option value="3m+">₦3M+</option>
+                        <option value="not-sure">Not sure yet</option>
                       </select>
                       {errors.budget && (
                         <p className="mt-1 text-sm text-red-500">
@@ -275,6 +280,39 @@ export default function ContactPage() {
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
+
+                  {/* What Happens Next Section */}
+                  <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                    <h4 className="text-lg font-semibold text-primary mb-4">
+                      What happens next?
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center text-sm font-bold">
+                          1
+                        </div>
+                        <p className="text-gray-600 text-sm">
+                          We review your details within 24 hours.
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center text-sm font-bold">
+                          2
+                        </div>
+                        <p className="text-gray-600 text-sm">
+                          We schedule a quick discovery call.
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center text-sm font-bold">
+                          3
+                        </div>
+                        <p className="text-gray-600 text-sm">
+                          You get a tailored proposal.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </form>
               </div>
             </motion.div>
@@ -297,10 +335,10 @@ export default function ContactPage() {
                     <div>
                       <div className="font-semibold text-gray-700">Email</div>
                       <a
-                        href="mailto:hello@ethovia.com"
+                        href="mailto:ethoviamarketingagency@gmail.com"
                         className="text-secondary hover:text-accent transition-colors"
                       >
-                        hello@ethovia.com
+                        ethoviamarketingagency@gmail.com
                       </a>
                     </div>
                   </div>
@@ -310,10 +348,10 @@ export default function ContactPage() {
                     <div>
                       <div className="font-semibold text-gray-700">Phone</div>
                       <a
-                        href="tel:+1234567890"
+                        href="tel:+2347084570264"
                         className="text-secondary hover:text-accent transition-colors"
                       >
-                        +1 (234) 567-890
+                        +234 708 457 0264
                       </a>
                     </div>
                   </div>
@@ -321,14 +359,8 @@ export default function ContactPage() {
                   <div className="flex items-start">
                     <MapPin className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" />
                     <div>
-                      <div className="font-semibold text-gray-700">
-                        Address
-                      </div>
-                      <div className="text-gray-600">
-                        123 Digital Avenue
-                        <br />
-                        San Francisco, CA 94103
-                      </div>
+                      <div className="font-semibold text-gray-700">Address</div>
+                      <div className="text-gray-600">Lagos, Nigeria</div>
                     </div>
                   </div>
 
@@ -355,32 +387,40 @@ export default function ContactPage() {
                 </h3>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
-                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="#"
+                    href="https://www.facebook.com/share/17xb8qfPEm/?mibextid=wwXIfr"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
                     aria-label="Facebook"
                   >
                     <Facebook className="w-6 h-6" />
                   </a>
                   <a
-                    href="#"
+                    href="https://x.com/ethovia_agency"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
+                    aria-label="X (Twitter)"
+                  >
+                    <Twitter className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/ethovia.marketing.agency/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
                     aria-label="Instagram"
                   >
                     <Instagram className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="https://t.me/ethovia_marketing_agency"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 border border-primary/20"
+                    aria-label="Telegram"
+                  >
+                    <Send className="w-6 h-6" />
                   </a>
                 </div>
               </div>
@@ -388,9 +428,12 @@ export default function ContactPage() {
               {/* Quick Response Badge */}
               <div className="bg-gradient-to-br from-[#00024D] to-[#4A9FFF] rounded-lg p-6 text-white">
                 <div className="text-4xl font-bold mb-2 text-white">24h</div>
-                <div className="text-lg font-semibold mb-1 text-[#4A9FFF]">Response Time</div>
+                <div className="text-lg font-semibold mb-1 text-[#4A9FFF]">
+                  Response Time
+                </div>
                 <div className="text-sm text-white/90">
-                  We typically respond to all inquiries within 24 hours on business days
+                  We typically respond to all inquiries within 24 hours on
+                  business days
                 </div>
               </div>
             </motion.div>

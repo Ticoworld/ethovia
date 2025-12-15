@@ -37,7 +37,9 @@ export default function Navbar() {
   useEffect(() => {
     setMounted(true);
     // Create or reuse a dedicated portal container (persist across navigations/HMR)
-    let el = document.getElementById("mobile-menu-portal") as HTMLDivElement | null;
+    let el = document.getElementById(
+      "mobile-menu-portal"
+    ) as HTMLDivElement | null;
     if (!el) {
       el = document.createElement("div");
       el.setAttribute("id", "mobile-menu-portal");
@@ -60,14 +62,14 @@ export default function Navbar() {
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
-    
+
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
@@ -144,9 +146,7 @@ export default function Navbar() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
                 {/* Animated gradient background */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                />
+                <motion.div className="absolute inset-0 bg-gradient-to-r from-accent to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 {/* Hover shine effect */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
@@ -185,16 +185,16 @@ export default function Navbar() {
                   transition={{ duration: 0.2 }}
                   className="md:hidden fixed inset-0 z-[9999] overflow-y-auto"
                   style={{
-                    position: 'fixed',
+                    position: "fixed",
                     top: 0,
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    height: '100dvh',
-                    overflowX: 'hidden',
-                    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                    backdropFilter: 'blur(24px) saturate(180%)',
-                    WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                    height: "100dvh",
+                    overflowX: "hidden",
+                    backgroundColor: "rgba(0, 2, 77, 0.98)", // Deep premium blue
+                    backdropFilter: "blur(24px) saturate(180%)",
+                    WebkitBackdropFilter: "blur(24px) saturate(180%)",
                   }}
                   aria-modal="true"
                   role="dialog"
@@ -210,8 +210,8 @@ export default function Navbar() {
                   </motion.button>
 
                   {/* Decorative gradient */}
-                  <div className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
 
                   <div className="relative flex flex-col items-center justify-center min-h-screen min-h-[100dvh] space-y-8 px-8 py-24">
                     {navLinks.map((link, index) => (
@@ -243,8 +243,11 @@ export default function Navbar() {
                       transition={{ delay: 0.4 }}
                       className="mt-8"
                     >
-                      <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                        <button className="px-8 py-4 bg-gradient-to-r from-secondary to-accent text-white rounded-full font-semibold text-lg shadow-2xl shadow-accent/50">
+                      <Link
+                        href="/contact"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <button className="px-10 py-4 bg-gradient-to-r from-secondary to-accent text-white rounded-full font-bold text-lg shadow-2xl shadow-accent/50 border border-white/20 active:scale-95 transition-transform duration-200">
                           Get Started
                         </button>
                       </Link>

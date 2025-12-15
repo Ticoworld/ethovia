@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Linkedin,
+  Send,
   Twitter,
   Facebook,
   Instagram,
@@ -20,18 +20,36 @@ const footerLinks = {
     { name: "Work", href: "/work" },
     { name: "Contact", href: "/contact" },
   ],
+  industries: [
+    { name: "Real Estate", href: "/industries/real-estate" },
+    { name: "Fintech & Crypto", href: "/industries/fintech" },
+    { name: "E-Commerce", href: "/industries/e-commerce" },
+    { name: "Education / EdTech", href: "/industries/education" },
+  ],
   services: [
-    { name: "Website Development", href: "/services#web-development" },
-    { name: "Paid Advertising", href: "/services#paid-advertising" },
-    { name: "Digital Strategy", href: "/services#strategy" },
+    { name: "Real Estate Systems", href: "/services/real-estate-systems" },
+    { name: "App Development", href: "/services/app-development" },
+    { name: "Paid Advertising", href: "/services/paid-advertising" },
   ],
 };
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  {
+    icon: Facebook,
+    href: "https://www.facebook.com/share/17xb8qfPEm/?mibextid=wwXIfr",
+    label: "Facebook",
+  },
+  { icon: Twitter, href: "https://x.com/ethovia_agency", label: "X (Twitter)" },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/ethovia.marketing.agency/",
+    label: "Instagram",
+  },
+  {
+    icon: Send,
+    href: "https://t.me/ethovia_marketing_agency",
+    label: "Telegram",
+  },
 ];
 
 export default function Footer() {
@@ -45,7 +63,7 @@ export default function Footer() {
           src="/images/logo/ethovia-logo.png"
           alt="Ethovia Watermark"
           fill
-          className="object-contain opacity-10 scale-150"
+          className="object-contain opacity-10 scale-150 md:scale-[2.5]"
           aria-hidden="true"
           sizes="100vw"
           priority
@@ -54,7 +72,7 @@ export default function Footer() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-8">
           {/* Company Info */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center h-12 w-fit">
@@ -69,8 +87,12 @@ export default function Footer() {
               />
             </Link>
             <p className="text-white/80 text-base leading-relaxed font-medium">
-              Digital Marketing That Delivers Results.<br/>
-              <span className="text-accent font-semibold">Empowering brands with innovative web solutions and data-driven campaigns.</span>
+              Digital Marketing That Delivers Results.
+              <br />
+              <span className="text-accent font-semibold">
+                Empowering brands with innovative web solutions and data-driven
+                campaigns.
+              </span>
             </p>
             {/* Social Icons */}
             <div className="flex space-x-4 pt-2">
@@ -106,11 +128,28 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Industries */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-accent">
-              Services
+              Industries
             </h3>
+            <ul className="space-y-2">
+              {footerLinks.industries.map((link) => (
+                <li key={`${link.name}-${link.href}`}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-accent transition-colors duration-300 text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-accent">Services</h3>
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={`${link.name}-${link.href}`}>
@@ -134,30 +173,31 @@ export default function Footer() {
               <li className="flex items-start space-x-3 text-sm">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <a
-                  href="mailto:hello@ethovia.com"
+                  href="mailto:ethoviamarketingagency@gmail.com"
                   className="text-white/70 hover:text-accent transition-colors duration-300"
                 >
-                  hello@ethovia.com
+                  ethoviamarketingagency@gmail.com
                 </a>
               </li>
               <li className="flex items-start space-x-3 text-sm">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+2347084570264"
                   className="text-white/70 hover:text-accent transition-colors duration-300"
                 >
-                  +1 (234) 567-890
+                  +234 708 457 0264
                 </a>
               </li>
               <li className="flex items-start space-x-3 text-sm">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span className="text-white/70">
-                  123 Digital Avenue
-                  <br />
-                  San Francisco, CA 94103
-                </span>
+                <span className="text-white/70">Lagos, Nigeria</span>
               </li>
             </ul>
+            <div className="mt-6 border-t border-white/10 pt-4">
+              <p className="text-xs text-white/50 font-medium">
+                Certified Meta & Google Ads Partner.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -165,7 +205,8 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-white/60 text-sm">
-              © {currentYear} Ethovia Marketing Agency. All rights reserved.
+              © {currentYear} Ethovia Marketing Agency. RC 1928374. All rights
+              reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <Link

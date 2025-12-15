@@ -12,7 +12,7 @@ import {
   Target,
   ShoppingCart,
   Eye,
-  LucideIcon
+  LucideIcon,
 } from "lucide-react";
 import { CaseStudy } from "@/data/portfolioData";
 
@@ -39,7 +39,9 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyClientProps) {
     "Social Media": "from-[#18002F] via-[#3F1C7F] to-[#8B48FF]",
   };
 
-  const heroGradient = heroBackgrounds[caseStudy.category] ?? "from-[#000024] via-[#00024D] to-[#1A1A2E]";
+  const heroGradient =
+    heroBackgrounds[caseStudy.category] ??
+    "from-[#000024] via-[#00024D] to-[#1A1A2E]";
 
   return (
     <>

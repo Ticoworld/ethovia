@@ -10,37 +10,36 @@ interface ApproachCardProps {
   alt?: string;
 }
 
-export default function ApproachCard({ title, description, imgSrc, alt }: ApproachCardProps) {
+export default function ApproachCard({
+  title,
+  description,
+  imgSrc,
+  alt,
+}: ApproachCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45 }}
-      className="group relative"
+      className="relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br from-white/10 to-transparent border border-white/10 hover:-translate-y-1 transition-transform duration-300"
     >
-      {/* Card background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-white/0 rounded-2xl border border-white/10 transition-all duration-300 group-hover:from-white/10 group-hover:border-accent/50" />
-
-      <div className="relative rounded-2xl overflow-hidden p-8">
-        {/* Text content — leave room on right for illustration */}
-        <div className="pr-28">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 transition-colors duration-200 group-hover:text-[#00F0FF]">
-            {title}
-          </h3>
-          <p className="text-base text-white/70 leading-relaxed">{description}</p>
-        </div>
-
-        {/* Illustration placed to the right and visually "cut out" of the card */}
-        <div className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 w-28 h-28">
-          <Image src={imgSrc} alt={alt ?? title} width={112} height={112} className="object-contain" />
-        </div>
-
-        {/* Hover glow */}
-        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent rounded-2xl blur-xl" />
-        </div>
+      {/* Text content with higher z-index */}
+      <div className="relative z-10">
+        <h3 className="text-2xl font-bold mb-2 text-white">{title}</h3>
+        <p className="text-white/70 text-sm leading-relaxed max-w-[80%]">
+          {description}
+        </p>
       </div>
+
+      {/* Huge static 3D icon bleeding off the corner */}
+      <Image
+        src={imgSrc}
+        alt={alt ?? title}
+        width={192}
+        height={192}
+        className="absolute -bottom-8 -right-8 w-48 h-48 opacity-80 object-contain rotate-12 z-0 pointer-events-none"
+      />
     </motion.div>
   );
 }

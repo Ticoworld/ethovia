@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
-import Button from "@/components/common/Button";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export default function CTASection() {
   return (
@@ -34,41 +33,62 @@ export default function CTASection() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-              Ready to Grow Your{" "}
-              <span className="text-gradient inline-block animate-gradient">Business?</span>
+              Ready to Dominate the{" "}
+              <span className="text-gradient inline-block animate-gradient">
+                Nigerian Market?
+              </span>
             </h2>
             <p className="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-2xl mx-auto">
-              Let&apos;s discuss how we can help you achieve your marketing
-              goals
+              Stop guessing. Start converting with Nigeria&apos;s #1 performance
+              agency.
             </p>
 
-            {/* CTA Button */}
-            <Link href="/contact">
-              <Button variant="primary" size="lg" className="mb-12 text-lg px-10 py-6">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[#00024D] bg-white rounded-full shadow-lg hover:bg-gray-100 transition-transform active:scale-95"
+              >
                 Schedule a Free Consultation
-              </Button>
-            </Link>
+              </Link>
+              <a
+                href="https://wa.me/2347084570264?text=Hi%20Ethovia,%20I%20want%20to%20dominate%20my%20market."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Chat on WhatsApp
+              </a>
+            </div>
+
+            {/* Trust Anchor */}
+            <p className="text-white/60 text-sm mt-8 mb-12">
+              Join 50+ Nigerian brands growing with us.
+            </p>
 
             {/* Contact Info */}
             <div className="flex flex-col sm:flex-row justify-center items-center gap-8 text-white text-lg">
               <a
-                href="mailto:hello@ethovia.com"
+                href="mailto:ethoviamarketingagency@gmail.com"
                 className="flex items-center gap-3 hover:text-accent transition-all duration-200 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-200">
                   <Mail className="w-6 h-6" />
                 </div>
-                <span className="font-medium">hello@ethovia.com</span>
+                <span className="font-medium">
+                  ethoviamarketingagency@gmail.com
+                </span>
               </a>
               <div className="hidden sm:block w-px h-8 bg-white/20" />
               <a
-                href="tel:+1234567890"
+                href="tel:+2347084570264"
                 className="flex items-center gap-3 hover:text-accent transition-all duration-200 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-200">
                   <Phone className="w-6 h-6" />
                 </div>
-                <span className="font-medium">+1 (234) 567-890</span>
+                <span className="font-medium">+234 708 457 0264</span>
               </a>
             </div>
           </motion.div>
@@ -98,7 +118,7 @@ export default function CTASection() {
         }}
         className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-secondary/20 blur-3xl"
       />
-      
+
       {/* Additional floating orbs */}
       <motion.div
         animate={{

@@ -1,31 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ApproachCard from "./ApproachCard";
+import Image from "next/image";
 
 const principles = [
   {
     id: 1,
-    title: "Speed",
-    description: "Lightning-fast execution without compromising quality",
+    title: "Fast on 3G/4G", // Address network anxiety
+    description:
+      "We optimize every line of code so your site loads instantly, even on unstable mobile networks.",
     img: "/images/approach/speed-illustration.png",
   },
   {
     id: 2,
-    title: "Precision",
-    description: "Data-driven strategies that hit the mark every time",
+    title: "Targeted Local Reach", // Address "wasteful ads"
+    description:
+      "We don't guess. We target active buyers in key commercial hubs like Lagos, Abuja, and PH.",
     img: "/images/approach/precision-illustration.png",
   },
   {
     id: 3,
-    title: "Innovation",
-    description: "Cutting-edge solutions that set you apart",
+    title: "Mobile-First Logic", // Address 90% mobile traffic
+    description:
+      "90% of Nigerian traffic is mobile. We design thumb-friendly interfaces that convert on small screens.",
     img: "/images/approach/innovation-illustration.png",
   },
   {
     id: 4,
-    title: "Growth",
-    description: "Scalable systems built for exponential success",
+    title: "Revenue Focused", // Address "Vanity Metrics"
+    description:
+      "We move beyond 'likes'. We build systems that drive real inquiries and payment alerts.",
     img: "/images/approach/growth-illustration.png",
   },
 ];
@@ -46,21 +50,42 @@ export default function Stats() {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Our Approach
+            Built for the Nigerian Market
           </h2>
           <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
-            Four core principles that drive everything we do
+            Strategies optimized for local challenges, slow networks, and
+            high-growth goals.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {principles.map((p) => (
-            <ApproachCard
-              key={p.id}
-              title={p.title}
-              description={p.description}
-              imgSrc={p.img}
-            />
+          {principles.map((principle) => (
+            <div
+              key={principle.id}
+              className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 p-8 h-full group hover:-translate-y-1 transition-transform duration-300"
+            >
+              {/* TEXT LAYER - High Z-Index to sit on top */}
+              <div className="relative z-10 flex flex-col justify-start h-full">
+                <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
+                  {principle.title}
+                </h3>
+                <p className="text-white/70 text-sm leading-relaxed max-w-[85%]">
+                  {principle.description}
+                </p>
+              </div>
+
+              {/* DECORATIVE ICON LAYER - Low Z-Index, Massive Size */}
+              <div className="absolute -bottom-8 -right-16 z-0 opacity-40 rotate-12 pointer-events-none">
+                <div className="relative w-56 h-56">
+                  <Image
+                    src={principle.img}
+                    alt={principle.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
