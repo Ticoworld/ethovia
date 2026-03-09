@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ethovia Website
 
-## Getting Started
+## Project Summary
+Ethovia is a Next.js App Router website for a digital marketing agency.  
+It contains public-facing pages for homepage, about, services, work portfolio, dynamic case studies, contact, privacy policy, terms, and a custom 404 page.
 
-First, run the development server:
+## Problem Solved
+The repository implements a branded web presence that:
+- presents services and case studies,
+- communicates contact channels,
+- captures inquiry details through a validated contact form UI.
 
+## Features
+- Next.js App Router routing:
+  - `/`
+  - `/about`
+  - `/services`
+  - `/work`
+  - `/work/[slug]`
+  - `/contact`
+  - `/privacy`
+  - `/terms`
+  - custom `not-found` page
+- Shared site shell: navbar, footer, floating WhatsApp button, scroll-to-top button.
+- Portfolio data source in `src/data/portfolioData.ts`, used for:
+  - `/work` listing and filtering UI
+  - static params generation for `/work/[slug]`
+  - individual case-study rendering
+- Contact form with client-side validation via React Hook Form + Zod.
+- Animation and motion effects via Framer Motion and Lenis.
+
+## Tech Stack
+- Framework: Next.js `^16.0.10`
+- Runtime UI: React `19.1.0`, React DOM `19.1.0`
+- Language: TypeScript
+- Styling: Tailwind CSS v4
+- Animation: Framer Motion, Lenis
+- Forms/Validation: React Hook Form, Zod, `@hookform/resolvers`
+- Icons: Lucide React
+- Linting: ESLint (Next.js config)
+
+## Setup
+Prerequisites:
+- Node.js (version not pinned in repo)
+- npm
+
+Install and run:
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build and run production server:
+```bash
+npm run build
+npm run start
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Lint:
+```bash
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Note: linting requires dependencies to be installed (`node_modules` present).
 
-## Learn More
+## Structure
+```text
+src/
+  app/
+    about/page.tsx
+    contact/page.tsx
+    privacy/page.tsx
+    services/page.tsx
+    terms/page.tsx
+    work/page.tsx
+    work/[slug]/page.tsx
+    globals.css
+    layout.tsx
+    not-found.tsx
+    page.tsx
+  components/
+    common/
+    home/
+    layout/
+    work/
+  data/
+    portfolioData.ts
+public/
+  images/
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture Overview
+- Rendering model:
+  - App Router layout (`src/app/layout.tsx`) wraps all pages with shared UI components.
+  - Most UI components are client components (`"use client"`), including animated sections and form handling.
+- Data model:
+  - Case-study content is local static data in `src/data/portfolioData.ts`.
+  - `getAllSlugs()` feeds `generateStaticParams()` for static dynamic-route generation.
+  - `getCaseStudyBySlug()` resolves data for `/work/[slug]`.
+- Interaction model:
+  - Contact form validates locally and shows success UI after a simulated async delay.
+  - No API route handlers are present in `src/app` (`route.ts` files not found).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment Notes (Confirmed)
+- Confirmed scripts for standard Next.js deployment flow:
+  - `npm run build`
+  - `npm run start`
+- `next.config.ts` configures image quality allowlist.
+- No deployment-specific config files detected:
+  - no `vercel.json`
+  - no `Dockerfile`
+  - no CI workflow files under `.github/workflows`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Limitations
+- Contact form does not submit to a backend; it simulates submission and logs form data to the browser console.
+- Legal pages currently contain placeholder text.
+- Some internal links in footer/home service cards target routes or anchors not currently implemented.
+- No automated tests were found in this repository.
+- Repository contains at least one empty component file (`src/components/common/SmoothScrollProvider.tsx`) and some apparently unused assets/components.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Partially Inferred Items
+- The exact production hosting platform is not declared in repository config.
+- Whether some missing routes are planned future pages or accidental dead links is not explicitly documented.
